@@ -32,7 +32,10 @@ public class Hooks {
 
     @After()
     public void afterFeature(){
-
+//        try { Thread.sleep(5000); } catch (Exception ign) {}
+        driver.closeApp();
+//        driver.quit();
+//        driver.close();
     }
 
 }

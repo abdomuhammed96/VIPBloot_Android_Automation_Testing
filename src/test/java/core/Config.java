@@ -1,5 +1,7 @@
 package core;
 
+import io.appium.java_client.remote.MobileCapabilityType;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -56,7 +58,7 @@ public class Config {
         url = System.getProperty("seleniumGrid", "http://0.0.0.0:4723/wd/hub");
         capabilities.put("deviceName", System.getProperty("DEVICE_NAME", androidProp.getProperty("DEVICE_NAME")));
         capabilities.put("systemPort", parseInt(getProperty("systemPort", "8200")));
-        capabilities.put("appiumVersion", "1.18.0");
+        capabilities.put("appiumVersion", "1.22.0");
         capabilities.put("autoGrantPermissions", true);
         capabilities.put("appActivity", "");
         capabilities.put("appPackage", "");
@@ -68,8 +70,10 @@ public class Config {
         capabilities.put("platformVersion", System.getProperty("PLATFORM_VERSION", androidProp.getProperty("PLATFORM_VERSION")));
         capabilities.put("platformName", "Android");
         capabilities.put("noReset", false);
-        capabilities.put("app", WORKSPACE.concat(System.getProperty("app.Android", androidProp.getProperty("app.Android"))));
+        capabilities.put("app", WORKSPACE.concat(System.getProperty("Android", androidProp.getProperty("APP"))));
         capabilities.put("app-wait-activity", "");
+        capabilities.put("clearDeviceLogsOnStart", true);
+        capabilities.put("–session-override",true);
     }
 
 

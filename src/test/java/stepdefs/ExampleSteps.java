@@ -24,10 +24,4 @@ public class ExampleSteps {
     public void theUserClickOnExampleButton() {
         page.sampleClickOnSampleElement();
     }
-
-    @Then("event field should be {string}")
-    public void eventExampleShouldBeRecorded(String expectedResult) {
-        softAssert.assertEquals("eventActual",expectedResult);
-        softAssert.assertAll();
-    }
 }
