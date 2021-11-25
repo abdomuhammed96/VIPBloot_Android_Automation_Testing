@@ -1,4 +1,4 @@
-package pages.SamplePage;
+package pages.MainPage;
 
 public abstract class MainPageAbstract extends MainPO {
 

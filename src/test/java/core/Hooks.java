@@ -31,11 +31,14 @@ public class Hooks {
     }
 
     @After()
-    public void afterFeature(){
+    public void afterScenario(){
 //        try { Thread.sleep(5000); } catch (Exception ign) {}
         driver.closeApp();
 //        driver.quit();
 //        driver.close();
+        navigateToMain();
     }
+
+    public void navigateToMain() {}
 
 }

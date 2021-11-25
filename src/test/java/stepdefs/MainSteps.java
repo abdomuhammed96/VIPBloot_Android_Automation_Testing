@@ -4,8 +4,8 @@ import core.Config;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.asserts.SoftAssert;
-import pages.SamplePage.MainPageAbstract;
-import pages.SamplePage.MainPageLogicAndroid;
+import pages.MainPage.MainPageAbstract;
+import pages.MainPage.MainPageLogicAndroid;
 
 public class MainSteps {
 

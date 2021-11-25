@@ -1,4 +1,4 @@
-package pages.SamplePage;
+package pages.MainPage;
 
 import base.LogCompare;
 import com.google.gson.JsonObject;

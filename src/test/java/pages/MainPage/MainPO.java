@@ -1,4 +1,4 @@
-package pages.SamplePage;
+package pages.MainPage;
 
 import base.PageObjectBase;
 import io.appium.java_client.MobileElement;

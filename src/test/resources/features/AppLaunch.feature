@@ -1,5 +1,5 @@
 Feature: check AppLaunch event
-
+# data table
 #  Scenario Outline: Check App Launch Events
   Scenario: Check App Launch Events
     Given User opens App
