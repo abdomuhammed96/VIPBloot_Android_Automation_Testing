@@ -62,12 +62,8 @@ public class LogCapture {
 	 * @return Captured Logs from android emulator
 	 */
 	public static JsonObject[] captureEvents(MobileDriver driver) {
-    	//Get all log in list. each logentry represents line from log
-		for (int i = 0; i< jsonList.length; i++){
-			jsonList[i] = new JsonObject();
-		}
+		jsonList = new JsonObject[10];
 
-//		JSONObject[] jsonList = new JSONObject[10];
     	List<LogEntry> logEntries = driver.manage().logs().get("logcat").filter(Level.ALL);
     	int eventIndex = 0;
 
@@ -76,9 +72,8 @@ public class LogCapture {
     		String value = null;
     		// filter in logEntries List on the String contains Seclib
     		if (logEntries.get(j).getMessage().contains("SecLib:SqliteDB: {")) {
+				jsonList[eventIndex] = new JsonObject();
 
-//    			JSONObject json = new JSONObject();
-    			
     			//when the it contains "SecLib:SqliteDB: {" thant means I capurted the first line in the event
     			for (int i = j+1; i < logEntries.size(); i++) {
 	    			//loop on the following lines to capture an events and ends when it contains "}"
@@ -109,10 +104,6 @@ public class LogCapture {
 						}
 					}
 					jsonList[eventIndex].addProperty(key, value);
-					/////////////////////////////////////////////
-//					String s = jsonList[eventIndex].get(key).toString();
-//					System.out.println("Value of key: " + key + " equal: " + s);
-
     			}
     		}
 		}

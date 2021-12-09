@@ -7,18 +7,7 @@ import java.util.Set;
 
 public class LogCompare {
 	
-	//private static final String Assert = null;
 	public static JsonObject[] logs;
-	/*
-	*//**
-	 * @author Shaher Amin
-	 * @param logs captured
-	 * 
-	 *//*
-	public void setLogs(JsonObject[] logs) {
-		this.logs = logs;
-	}
-	*/
 	/**
 	 * @author Shaher Amin
 	 * @param events
@@ -48,9 +37,6 @@ public class LogCompare {
 		for (Map.Entry<String, JsonElement> entry: entries) {
 			String key = entry.getKey().toString();
 			if (!event.get(key).equals(log.get(key))){
-//				System.out.println("Wrong Event_type for Event # "+ eventIndex +
-//						"Expected: " + event.get(key).toString() +
-//						" Actual: " + log.get(key).toString());
 			}
 		}
 	}
@@ -64,26 +50,5 @@ public class LogCompare {
 		if (jObjValue.equals(ExpectedValue))
 			return true;
 		return false;
-
-		/*try {
-			// not required for testing
-			if (eElement.equals("NA")) {
-				return true;
-			}
-			// No data received 
-			if (lElement == null) {
-				return false;
-			}
-			// check if both are equal
-			if (lElement.equals(eElement)) {
-				return true;
-			}else {
-				return false;
-			}
-		} catch (Exception e) {
-			System.out.println("Empty Event");
-			return false;
-		}*/
 	}
-
 }

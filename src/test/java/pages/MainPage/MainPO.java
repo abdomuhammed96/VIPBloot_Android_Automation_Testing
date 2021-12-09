@@ -12,9 +12,18 @@ public class MainPO extends PageObjectBase {
     public MainPO(){super();}
 
     @FindAll({
-            @FindBy(how = How.ID, using = "android"),
-            @FindBy(how = How.ID, using = "iOS")
+            @FindBy(how = How.XPATH, using = "(//*[@class='android.widget.Switch'])[1]"),
     })
-    public MobileElement SAMPLE_ELEMENT;
+    public MobileElement SMAPI_ON_OFF;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//*[@class='android.widget.Switch'])[2]"),
+    })
+    public MobileElement VerboseON_OFF;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//*[@class='android.widget.Switch'])[3]"),
+    })
+    public MobileElement Network_ON_OFF;
 
 }

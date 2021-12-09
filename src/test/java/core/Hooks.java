@@ -22,6 +22,10 @@ public class Hooks {
         Hooks.driver = driver;
     }
 
+    private static void closeDriver() {
+        Hooks.driver = null;
+    }
+
     @Before(order = 1)
     public void beforeAll() throws MalformedURLException {
         if (driver == null) {
@@ -32,13 +36,10 @@ public class Hooks {
 
     @After()
     public void afterScenario(){
-//        try { Thread.sleep(5000); } catch (Exception ign) {}
         driver.closeApp();
-//        driver.quit();
-//        driver.close();
-        navigateToMain();
+        closeDriver();
+        try { Thread.sleep(3000); } catch (Exception ign) {}
     }
 
-    public void navigateToMain() {}
 
 }

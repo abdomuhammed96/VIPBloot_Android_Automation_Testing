@@ -1,7 +1,9 @@
 package base;
 
+import com.google.gson.JsonObject;
 import core.Config;
 import core.Hooks;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
@@ -15,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class PageObjectBase {
     public MobileDriver driver;
     WebDriverWait wait;
+    LogCapture logCapture = new LogCapture();
 
     public PageObjectBase() {
         this.driver = Hooks.getDriver();
@@ -42,5 +45,43 @@ public abstract class PageObjectBase {
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
+    public void scrollTo(String name){
+        driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+                        + name +
+                        "\").instance(0))"));
+        try { Thread.sleep(1000); } catch (Exception ign) {}
+    }
+
+    public void scrollAndClick(String name){
+        driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+                        + name +
+                        "\").instance(0))")).click();
+        try { Thread.sleep(1000); } catch (Exception ign) {}
+    }
+
+    public JsonObject[] captureAllEvents() {
+        try { Thread.sleep(10000); } catch (Exception ign) {}
+        JsonObject[] jsonList = logCapture.captureEvents(driver);
+        try { Thread.sleep(3000); } catch (Exception ign) {}
+        logCapture.clearLog();
+        return jsonList;
+    }
+
+    public Boolean captureNoEvents() {
+        JsonObject[] jsonList = logCapture.captureEvents(driver);
+        if (jsonList[0] == null)
+            return true;
+        return false;
+    }
+
+    public void clearAllLogs() {
+        logCapture.clearLog();
+    }
+
+    public boolean compareParameter(String key, String value, int eventIndex) {
+        return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
+    }
 
 }

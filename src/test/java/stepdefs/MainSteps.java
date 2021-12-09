@@ -3,6 +3,7 @@ package stepdefs;
 import core.Config;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
 import pages.MainPage.MainPageAbstract;
 import pages.MainPage.MainPageLogicAndroid;
@@ -27,11 +28,6 @@ public class MainSteps {
         softAssert.assertAll();
     }
 
-    @Then("Capture And Compare Events")
-    public void captureEvents() {
-        page.captureAndCompareEvents();
-    }
-
     @Then("Capture And Compare Parameter [{string} {string} {int}]")
     public void captureAndCompareParameter(String key, String value, int eventIndex) {
         softAssert.assertTrue(page.captureAndCompareParameter(key, value, eventIndex),
@@ -40,4 +36,35 @@ public class MainSteps {
         softAssert.assertAll();
     }
 
+    @When("Capture Events;")
+    public void captureEvents() {
+        page.captureEvents();
+    }
+
+    @Then("Clear Logs")
+    public void clearLogs() {
+        page.clearLogs();
+    }
+
+    @When("Scroll and click {string}")
+    public void scrollAndClick(String name) {
+        page.scrollAndClickOnSampleElementByName(name);
+    }
+
+    @When("Scroll and click on Switch Button {string}")
+    public void scrollAndClickOnSwitchButton(String name) {
+        page.scrollAndClickOnSampleElementByName(name);
+        page.clickSwitchButton(name);
+    }
+
+    @Then("Pause Time {string} ms")
+    public void pauseTime(String time) {
+        try { Thread.sleep(Long.parseLong(time)); } catch (Exception ign) {}
+    }
+
+    @Then("No Events Captured")
+    public void noEventsCaptured() {
+        softAssert.assertTrue(page.captureNoEvents());
+        softAssert.assertAll();
+    }
 }
