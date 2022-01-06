@@ -139,7 +139,7 @@ Feature: Check the Stack Navigator Logs
     When Capture Events;
     When Scroll and click "Stack Navigator"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Page" 0]
+    #Then Capture And Compare Parameter ["event-type" "Page" 0]
     When Scroll and click "Navigate to Screen 3"
     When Capture Events;
     Then Capture And Compare Parameter ["event-type" "Page" 0]
@@ -150,6 +150,7 @@ Feature: Check the Stack Navigator Logs
     Then Capture And Compare Parameter ["page-name" "StackScreen3" 2]
     Then Capture And Compare Parameter ["event-description" "Loaded" 2]
     Then Scroll and click "Pop to Top"
+    When Capture Events;
     Then Capture And Compare Parameter ["page-name" "StackScreen3" 0]
     Then Capture And Compare Parameter ["event-element" "Stay Time" 0]
     Then Capture And Compare Parameter ["page-name" "StackScreen1" 1]
