@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -84,4 +83,31 @@ public abstract class PageObjectBase {
         return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
     }
 
+    public Boolean compareFlushEventParameter(String key,String value){
+        return LogCompare.compareKeyValue(key, value, logCapture.getFLUSHEvent());
+    }
+
+    public boolean checkCurrentDbCountEqual(int arg) {
+        if (arg == logCapture.getCurrentDbCount())
+            return true;
+        return false;
+    }
+
+    public boolean checkFlushCountSizeEqual(int arg) {
+        if (arg == logCapture.getFlushCountSize())
+            return true;
+        return false;
+    }
+
+    public boolean checkTotalEventSize(int arg) {
+        if (arg == logCapture.getTotal_event_size())
+            return true;
+        return false;
+    }
+
+    public boolean checkTotalUniqueEventSize(int arg) {
+        if (arg == logCapture.getTotal_unique_event_size())
+            return true;
+        return false;
+    }
 }

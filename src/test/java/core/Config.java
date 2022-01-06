@@ -1,6 +1,9 @@
 package core;
 
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,26 +17,33 @@ import static utils.PropertiesLoader.readPropertyFile;
 
 public class Config {
     private final String platform;
+    private final String browser;
     private final Map<String, Object> capabilities = new HashMap<>();
     private boolean isAndroid;
     private boolean isIos;
     private boolean isMobile;
+    private boolean isWeb;
     public static final String WORKSPACE = getProperty("user.dir");
     private String url;
 
     public Config() {
         Logger.getLogger("org.openqa.core.remote").setLevel(Level.OFF);
-        Properties androidProp = readPropertyFile("config/platform.properties");
-        platform = System.getProperty("PLATFORM", androidProp.getProperty("PLATFORM"));
+        Properties Prop = readPropertyFile("config/platform.properties");
+        platform = System.getProperty("PLATFORM", Prop.getProperty("PLATFORM"));
         setCapabilitiesForPlatform(platform);
+
+        Properties webProp = readPropertyFile("config/Web.properties");
+        browser = System.getProperty("Web", webProp.getProperty("Browser"));
     }
 
     private void setCapabilitiesForPlatform(String platform) {
         isAndroid = platform.equalsIgnoreCase("Android");
         isIos = platform.equalsIgnoreCase("iOS");
+        isWeb = platform.equalsIgnoreCase("web");
         if (isAndroid || isIos) isMobile = true;
         if (isAndroid) setAndroidCapabilities();
         if (isIos) setIosCapabilities();
+        if (isWeb) setWebCapabilities();
     }
 
     private void setIosCapabilities() {
@@ -76,12 +86,31 @@ public class Config {
         capabilities.put("–session-override",true);
     }
 
+    private void setWebCapabilities() {
+        Properties webProp = readPropertyFile("config/Web.properties");
+        url = webProp.getProperty("URL");
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+        logPrefs.enable(LogType.PROFILER, Level.ALL);
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        logPrefs.enable(LogType.CLIENT, Level.ALL);
+        logPrefs.enable(LogType.DRIVER, Level.ALL);
+        logPrefs.enable(LogType.SERVER, Level.ALL);
+        capabilities.put(CapabilityType.LOGGING_PREFS, "logPrefs");
+//        String browser = webProp.getProperty("URL");
+//        capabilities.put("")
+//        capabilities.put("browserName", "Chrome");
+    }
 
     //////////////////
     // Get and Sets //
     //////////////////
     String getPlatform() {
         return platform;
+    }
+
+    String getBrowser() {
+        return browser;
     }
 
     public Map<String, Object> getCapabilities() {
@@ -103,5 +132,7 @@ public class Config {
     public boolean isMobile() {
         return isMobile;
     }
-
+    public boolean isWeb() {
+        return isWeb;
+    }
 }

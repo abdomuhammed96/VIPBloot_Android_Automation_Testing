@@ -1,10 +1,11 @@
 package stepdefs;
 
 import core.Config;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
-import pages.MainPage.MainPageAbstract;
-import pages.MainPage.MainPageLogicAndroid;
+import pages.androidRNPage.MainPage.MainPageAbstract;
+import pages.androidRNPage.MainPage.MainPageLogicAndroid;
 
 public class ConfigStepdefs {
 
@@ -30,5 +31,40 @@ public class ConfigStepdefs {
     @When("Switch Network ON-OFF")
     public void switchNetworkONOFF() {
         page.configureSMAPI("Network");
+    }
+
+    @When("Edit Environment")
+    public void editEnvironment() {
+        page.configureSMAPI("Environment");
+    }
+
+    @When("Edit Trace_transaction_ID_Key")
+    public void editTrace_transaction_ID_Key() {
+        page.configureSMAPI("Trace transaction ID Key");
+    }
+
+    @When("Edit User_ID")
+    public void editUser_ID() {
+        page.configureSMAPI("User ID");
+    }
+
+    @Then("Press Cancel")
+    public void pressCancel() {
+        page.cancel();
+    }
+
+    @Then("Press Done")
+    public void pressDone() {
+        page.done();
+    }
+
+    @Then("Press Flush")
+    public void flush() {
+        page.flush();
+    }
+
+    @Then("Write {string}")
+    public void write(String text) {
+        page.writeText(text);
     }
 }

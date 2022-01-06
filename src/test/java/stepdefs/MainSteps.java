@@ -5,8 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
-import pages.MainPage.MainPageAbstract;
-import pages.MainPage.MainPageLogicAndroid;
+import pages.androidRNPage.MainPage.MainPageAbstract;
+import pages.androidRNPage.MainPage.MainPageLogicAndroid;
 
 public class MainSteps {
 
@@ -65,6 +65,37 @@ public class MainSteps {
     @Then("No Events Captured")
     public void noEventsCaptured() {
         softAssert.assertTrue(page.captureNoEvents());
+        softAssert.assertAll();
+    }
+
+    @Then("Check currentDbCount equal [{int}]")
+    public void checkCurrentDbCountEqual(int arg0) {
+        softAssert.assertTrue(page.checkCurrentDbCountEqualValue(arg0));
+        softAssert.assertAll();
+    }
+
+    @Then("Check flushCountSize equal [{int}]")
+    public void checkFlushCountSizeEqual(int arg0) {
+        softAssert.assertTrue(page.checkFlushCountSizeEqualValue(arg0));
+        softAssert.assertAll();
+    }
+
+    @Then("Check Total_event_size equal [{int}]")
+    public void checkTotal_event_sizeEqual(int arg0) {
+        softAssert.assertTrue(page.checkTotalEventSizeValue(arg0));
+        softAssert.assertAll();
+    }
+
+    @Then("Check Total_unique_event_size equal [{int}]")
+    public void checkTotal_unique_event_sizeEqual(int arg0) {
+        softAssert.assertTrue(page.checkTotalUniqueEventSizeValue(arg0));
+        softAssert.assertAll();
+    }
+
+    @Then("Compare Flush Event Parameter [{string} {string}]")
+    public void compareFlushEventParameter(String key, String value) {
+        softAssert.assertTrue(page.CompareFlushEventParameter(key, value),
+                "Wrong Event_type for flush Event Expected Value: " + value);
         softAssert.assertAll();
     }
 }
