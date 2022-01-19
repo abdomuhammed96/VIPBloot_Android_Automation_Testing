@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import core.Hooks;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +15,7 @@ public abstract class WebPageObjectBase {
 
     public WebPageObjectBase() {
         this.driver = Hooks.getWebDriver();
+        PageFactory.initElements(this.driver, this);
         wait = new WebDriverWait(driver, 60);
     }
 
@@ -33,6 +35,10 @@ public abstract class WebPageObjectBase {
 
     public boolean compareParameter(String key, String value, int eventIndex) {
         return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
+    }
+
+    public boolean CompareWebEvents(int eventCounts){
+        return LogCompare.checkWebEventsCount(logCapture.getWebEventsCount(), eventCounts);
     }
 
 }

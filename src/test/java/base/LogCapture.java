@@ -8,8 +8,10 @@ import io.appium.java_client.MobileDriver;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.Logs;
 import org.testng.Assert;
 
 public class LogCapture {
@@ -19,6 +21,7 @@ public class LogCapture {
 	private static int flushCountSize;
 	private static int Total_event_size;
 	private static int Total_unique_event_size;
+	private static int webEventsCount;
 
 	public JsonObject getFLUSHEvent() {
 		return jsonFLUSH;
@@ -40,6 +43,9 @@ public class LogCapture {
 		return Total_unique_event_size;
 	}
 
+	public static int getWebEventsCount() {
+		return webEventsCount;
+	}
 	/*
 	 * This class is responsible to capture logs from android emulator and Web Browser
 	 * after capturing the logs it start parsing the logs into events
@@ -98,6 +104,8 @@ public class LogCapture {
 	public JsonObject[] captureWebEvents(WebDriver driver) {
 		jsonList = new JsonObject[10];
 		List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
+//		entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
+//		entries = driver.manage().logs().get(LogType.SERVER).getAll();
 
 		/* Event example
 		[{"x-vf-trace-session-id":"2793d40a-e042-49f7-a993-69558f8e30c3"
@@ -138,6 +146,11 @@ public class LogCapture {
 				"page-name":"BootsApp | Home-http://localhost:3000/","subpage-name":"NA"}]
 		*/
 		for (LogEntry entry : entries) {
+			if (entry.getMessage().contains("current events count")){
+//				System.out.println(entry.getMessage());
+				String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");;
+				webEventsCount = Integer.parseInt(EventsCount);
+			}
 			if (entry.getMessage().contains("[{") && entry.getMessage().contains("}]")){
 				int eventIndex = 0;
 				String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("[{"), entry.getMessage().length()-1);

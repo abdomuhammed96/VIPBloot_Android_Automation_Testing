@@ -21,13 +21,21 @@ public class MainPageLogicWeb extends MainPageAbstract {
 
     @Override
     public void clickChangeStorageType() {
-        waitForVisibility(driver.findElement(By.xpath("/html/body/div[3]/div[1]/div/p/button[3]")));
-        driver.findElement(By.xpath("/html/body/div[3]/div[1]/div/p/button[3]")).click();
+
+        waitForVisibility(Change_Storage_Type);
+        Change_Storage_Type.click();
+//        waitForVisibility(driver.findElement(By.xpath("/html/body/div[3]/div[1]/div/p/button[3]")));
+//        driver.findElement(By.xpath("/html/body/div[3]/div[1]/div/p/button[3]")).click();
     }
 
     @Override
     public boolean CompareParameter(String key, String value, int eventIndex) {
         return compareParameter(key, value, eventIndex);
+    }
+
+    @Override
+    public boolean CheckWebEvents(int eventCounts) {
+        return CompareWebEvents(eventCounts);
     }
 
 }

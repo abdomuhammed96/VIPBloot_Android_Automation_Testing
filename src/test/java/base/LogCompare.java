@@ -51,4 +51,13 @@ public class LogCompare {
 			return true;
 		return false;
 	}
+
+	/**
+	 * @author Shaher Amin
+	 */
+	public static boolean checkWebEventsCount(int eventsCount, int expectedEventsCount) {
+		if (eventsCount == expectedEventsCount)
+			return true;
+		return false;
+	}
 }

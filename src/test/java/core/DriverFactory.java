@@ -9,7 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
@@ -63,10 +66,41 @@ public class DriverFactory {
                 driver.manage().window().maximize();
                 driver.get(config.getUrl());
                 return driver;
+
             case "FIREFOX":
                 WebDriverManager.firefoxdriver().reset();
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+
+                LoggingPreferences firefoxPreferences = new LoggingPreferences();
+                firefoxPreferences.enable(LogType.BROWSER, Level.ALL);
+                FirefoxOptions firefoxCaps = new FirefoxOptions();
+                firefoxCaps.setCapability(CapabilityType.LOGGING_PREFS, firefoxPreferences);
+//                firefoxCaps.setCapability("goog:loggingPrefs", firefoxPreferences);
+                firefoxCaps.setCapability("devtools.console.stdout.content", true);
+                firefoxCaps.addArguments();
+
+                driver = new FirefoxDriver(firefoxCaps);
+                driver.manage().window().maximize();
+                driver.get(config.getUrl());
+                return driver;
+
+            case "EDGE":
+                WebDriverManager.edgedriver().reset();
+                WebDriverManager.edgedriver().setup();
+
+                LoggingPreferences edgePreferences = new LoggingPreferences();
+                edgePreferences.enable(LogType.BROWSER, Level.ALL);
+                edgePreferences.enable(LogType.SERVER, Level.ALL);
+                edgePreferences.enable(LogType.PERFORMANCE, Level.ALL);
+
+                EdgeOptions edgeCaps = new EdgeOptions();
+                edgeCaps.setCapability(CapabilityType.LOGGING_PREFS, edgePreferences);
+                edgeCaps.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+                edgeCaps.setCapability("enableNetwork",true);
+                edgeCaps.setCapability("goog:loggingPrefs", edgePreferences);
+                edgeCaps.merge(edgeCaps);
+
+                driver = new EdgeDriver(edgeCaps);
                 driver.manage().window().maximize();
                 driver.get(config.getUrl());
                 return driver;

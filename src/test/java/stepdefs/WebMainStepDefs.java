@@ -44,4 +44,10 @@ public class WebMainStepDefs {
                         " Expected Value: " + value);
         softAssert.assertAll();
     }
+
+    @Then("Check WEB Events Count equal [{int}]")
+    public void checkWEBEventsCountEqual(int arg0) {
+        softAssert.assertTrue(page.CheckWebEvents(arg0));
+        softAssert.assertAll();
+    }
 }
