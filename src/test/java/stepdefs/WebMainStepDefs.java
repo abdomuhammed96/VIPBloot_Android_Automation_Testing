@@ -50,4 +50,63 @@ public class WebMainStepDefs {
         softAssert.assertTrue(page.CheckWebEvents(arg0));
         softAssert.assertAll();
     }
+
+    @Then("Click on About")
+    public void clickOnAbout() {
+        page.clickOnAbout();
+    }
+
+    @Then("Click on Subscribe")
+    public void clickOnSubscribe() {
+        page.clickOnSubscribe();
+    }
+
+    @Then("Click on SignUp")
+    public void clickOnSignUp() {
+        page.clickOnSignUp();
+    }
+
+    @Then("Click on Already have account Button")
+    public void clickOnAlreadyHaveAccountButton() {
+        page.clickOnAlreadyAccount();
+    }
+
+    @Then("Click on Pricing")
+    public void clickOnPricing() {
+        page.clickOnPricing();
+    }
+
+    @Then("Click on Login")
+    public void clickOnLogin(){
+        page.clickOnLogin();
+    }
+
+    @Then("Click on Login Button")
+    public void clickOnLoginButton(){
+        page.clickOnLoginButton();
+    }
+    @Then("Click on Forgot Password")
+    public void clickOnForgotPassword(){
+        page.clickOnForgotPassword();
+    }
+    @Then("Click on Don't have Account Button")
+    public void clickOnDonTHaveAccountButton(){
+        page.clickOnDonthaveAccount();
+    }
+
+
+    @Then("Click on Signupforfree")
+    public void clickOnSignupforfree() {
+        page.clickOnSignupforfree();
+    }
+
+    @Then("Click on GetStarted")
+    public void clickOnGetStarted() {
+        page.clickOnGetStarted();
+    }
+
+    @Then("Click on Contact Sales")
+    public void clickOnContactSales() {
+        page.clickOnContactSales();
+    }
 }
