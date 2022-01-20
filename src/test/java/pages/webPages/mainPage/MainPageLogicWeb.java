@@ -117,7 +117,7 @@ public class MainPageLogicWeb extends MainPageAbstract {
 
     @Override
     public boolean CheckWebEvents(int eventCounts) {
-        return false;
+        return CompareWebEvents(eventCounts);
     }
 
 }
