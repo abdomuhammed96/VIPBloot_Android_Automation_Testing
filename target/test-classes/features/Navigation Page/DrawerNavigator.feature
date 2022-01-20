@@ -32,7 +32,7 @@ Feature: Click on Drawer Navigator Logs
     Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
     Then Capture And Compare Parameter ["event-description" "Loaded" 2]
     Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 2]
-    #Then Close the Drawer
+    Then Close the Drawer
 
   Scenario: Click on Open Drawer Two And Upload Image
     Given User opens App

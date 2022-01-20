@@ -16,4 +16,6 @@ public abstract class MainPageAbstract extends MainPO {
     public abstract boolean CompareParameter(String key, String value, int eventIndex);
 
     public abstract boolean CheckWebEvents(int eventCounts);
+
+    public abstract void ScrollToAnELement(WebElement element) throws InterruptedException;
 }
