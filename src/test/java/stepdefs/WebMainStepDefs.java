@@ -34,7 +34,7 @@ public class WebMainStepDefs {
 
     @Then("Click Change Storage Type")
     public void clickChangeStorageTypeTest() {
-        page.clickChangeStorageType();
+        page.ClickOnElement(page.Change_Storage_Type);
     }
 
     @Then("Compare Parameter [{string} {string} {int}]")
@@ -53,60 +53,60 @@ public class WebMainStepDefs {
 
     @Then("Click on About")
     public void clickOnAbout() {
-        page.clickOnAbout();
+        page.ClickOnElement(page.Click_On_About);
     }
 
     @Then("Click on Subscribe")
     public void clickOnSubscribe() {
-        page.clickOnSubscribe();
+        page.ClickOnElement(page.Click_On_Subscribe);
     }
 
     @Then("Click on SignUp")
     public void clickOnSignUp() {
-        page.clickOnSignUp();
+        page.ClickOnElement(page.Click_On_SignUp);
     }
 
     @Then("Click on Already have account Button")
     public void clickOnAlreadyHaveAccountButton() {
-        page.clickOnAlreadyAccount();
+        page.ClickOnElement(page.Click_On_Already_Have_Account);
     }
 
     @Then("Click on Pricing")
     public void clickOnPricing() {
-        page.clickOnPricing();
+        page.ClickOnElement(page.Click_On_Pricing);
     }
 
     @Then("Click on Login")
     public void clickOnLogin(){
-        page.clickOnLogin();
+        page.ClickOnElement(page.Click_On_Login);
     }
 
     @Then("Click on Login Button")
     public void clickOnLoginButton(){
-        page.clickOnLoginButton();
+        page.ClickOnElement(page.Click_On_LoginButton);
     }
     @Then("Click on Forgot Password")
     public void clickOnForgotPassword(){
-        page.clickOnForgotPassword();
+        page.ClickOnElement(page.Click_On_ForgotPassword);
     }
     @Then("Click on Don't have Account Button")
     public void clickOnDonTHaveAccountButton(){
-        page.clickOnDonthaveAccount();
+        page.ClickOnElement(page.Click_On_Dont_Have_Account);
     }
 
 
     @Then("Click on Signupforfree")
     public void clickOnSignupforfree() {
-        page.clickOnSignupforfree();
+        page.ClickOnElement(page.Click_On_SignUpforfree);
     }
 
     @Then("Click on GetStarted")
     public void clickOnGetStarted() {
-        page.clickOnGetStarted();
+        page.ClickOnElement(page.Click_On_GetStarted);
     }
 
     @Then("Click on Contact Sales")
     public void clickOnContactSales() {
-        page.clickOnContactSales();
+        page.ClickOnElement(page.Click_On_ContactSales);
     }
 }

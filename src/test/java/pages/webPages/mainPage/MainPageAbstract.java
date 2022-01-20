@@ -1,6 +1,7 @@
 package pages.webPages.mainPage;
 
 import com.google.gson.JsonObject;
+import org.openqa.selenium.WebElement;
 
 public abstract class MainPageAbstract extends MainPO {
 
@@ -10,20 +11,7 @@ public abstract class MainPageAbstract extends MainPO {
 
     public abstract void sendJSScript(String arg1);
 
-    public abstract void clickChangeStorageType();
-    public abstract  void clickOnAbout();
-    public abstract void clickOnSubscribe();
-    public abstract void clickOnPricing();
-    public abstract void clickOnSignupforfree();
-    public abstract void clickOnGetStarted();
-    public abstract void clickOnContactSales();
-    public abstract void clickOnLogin();
-    public abstract void clickOnSignUp();
-
-    public abstract void clickOnLoginButton();
-    public abstract void clickOnForgotPassword();
-    public abstract void clickOnDonthaveAccount();
-    public abstract void clickOnAlreadyAccount();
+    public abstract void ClickOnElement(WebElement element);
 
     public abstract boolean CompareParameter(String key, String value, int eventIndex);
 
