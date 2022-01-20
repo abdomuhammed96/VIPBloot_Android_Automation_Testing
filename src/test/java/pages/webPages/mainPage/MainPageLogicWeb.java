@@ -1,6 +1,7 @@
 package pages.webPages.mainPage;
 
 import com.google.gson.JsonObject;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class MainPageLogicWeb extends MainPageAbstract {
@@ -25,8 +26,6 @@ public class MainPageLogicWeb extends MainPageAbstract {
         element.click();
     }
 
-
-
     @Override
     public boolean CompareParameter(String key, String value, int eventIndex) {
         return compareParameter(key, value, eventIndex);
@@ -35,6 +34,14 @@ public class MainPageLogicWeb extends MainPageAbstract {
     @Override
     public boolean CheckWebEvents(int eventCounts) {
         return CompareWebEvents(eventCounts);
+    }
+
+
+    @Override
+    public void ScrollToAnELement(WebElement element) throws InterruptedException {
+
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,500)", element);
+
     }
 
 }

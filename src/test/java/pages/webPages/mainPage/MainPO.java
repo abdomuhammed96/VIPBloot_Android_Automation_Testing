@@ -72,6 +72,22 @@ public class MainPO extends WebPageObjectBase {
     })
     public WebElement Click_On_Already_Have_Account;
 
+    @FindBy(xpath="/html[1]/body[1]/div[3]/div[1]/div[1]/p[1]/button[1]")
+    public WebElement MSISDN_1234567890;
+
+    @FindBy(xpath="/html/body/div[3]/div[1]/div/p/button[2]")
+    public WebElement NOT_MSISDN_12345NOT67890;
+
+    @FindBy(xpath="/html/body/div[3]/div[1]/div/p/a[1]")
+    public WebElement MSISDN_btn;
+
+    @FindBy(xpath="/html/body/div[3]/div[1]/div/p/a[2]")
+    public WebElement NOT_MSISDN;
+
+    @FindBy(xpath="/html/body/div[1]/div/div/a")
+    public WebElement getStarted;
+
+
 
 }
 

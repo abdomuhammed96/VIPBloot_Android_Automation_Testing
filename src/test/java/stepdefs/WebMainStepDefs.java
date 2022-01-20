@@ -3,6 +3,7 @@ package stepdefs;
 import core.Config;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
 import pages.webPages.mainPage.MainPageAbstract;
 import pages.webPages.mainPage.MainPageLogicWeb;
@@ -32,10 +33,6 @@ public class WebMainStepDefs {
         page.sendJSScript(arg1);
     }
 
-    @Then("Click Change Storage Type")
-    public void clickChangeStorageTypeTest() {
-        page.ClickOnElement(page.Change_Storage_Type);
-    }
 
     @Then("Compare Parameter [{string} {string} {int}]")
     public void compareParameterTest(String key, String value, int eventIndex) {
@@ -108,5 +105,44 @@ public class WebMainStepDefs {
     @Then("Click on Contact Sales")
     public void clickOnContactSales() {
         page.ClickOnElement(page.Click_On_ContactSales);
+    }
+
+
+    //MSISDN 1234567890
+    @When("Click on First MSISDN button")
+    public void clickOnFirstMSISDNButton() throws InterruptedException {
+        page.ScrollToAnELement(page.MSISDN_1234567890);
+        page.ClickOnElement(page.MSISDN_1234567890);
+    }
+
+    //NOT MSISDN 12345NOT67890
+    @When("Click on Second MSISDN button")
+    public void clickOnSecondMSISDNButton() throws InterruptedException {
+        page.ScrollToAnELement(page.NOT_MSISDN_12345NOT67890);
+        page.ClickOnElement(page.NOT_MSISDN_12345NOT67890);
+    }
+    //MSISDN
+    @When("Click on Third MSISDN button")
+    public void clickOnThirdMSISDNButton() throws InterruptedException {
+        page.ScrollToAnELement(page.MSISDN_btn);
+        page.ClickOnElement(page.MSISDN_btn);
+    }
+
+    //NOT MSISDN
+    @When("Click on the fourth MSISDN button")
+    public void clickOnFourthMSISDNButton() throws InterruptedException {
+        page.ScrollToAnELement(page.NOT_MSISDN);
+        page.ClickOnElement(page.NOT_MSISDN);
+    }
+
+    @Then("Click Change Storage Type")
+    public void clickChangeStorageTypeTest() {
+        page.ClickOnElement(page.Change_Storage_Type);
+    }
+
+    @When("Click on Get Started")
+    public void ClickOnGetStartedIcon() throws InterruptedException {
+        page.ClickOnElement(page.getStarted);
+
     }
 }
