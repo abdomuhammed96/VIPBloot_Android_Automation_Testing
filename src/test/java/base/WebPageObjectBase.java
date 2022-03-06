@@ -19,26 +19,30 @@ public abstract class WebPageObjectBase {
         wait = new WebDriverWait(driver, 60);
     }
 
-    public JsonObject[] captureAllEvents() {
+    public JsonObject[] captureAllWebEvents() {
         try { Thread.sleep(10000); } catch (Exception ign) {}
         JsonObject[] jsonList = logCapture.captureWebEvents(driver);
         return jsonList;
     }
 
-    public void sendJS(String arg){
-        logCapture.SendJSScript(driver, arg);
-    }
-
-    public void waitForVisibility(WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public boolean compareParameter(String key, String value, int eventIndex) {
+    public boolean compareWebElement(String key, String value, int eventIndex) {
         return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
     }
 
     public boolean CompareWebEvents(int eventCounts){
         return LogCompare.checkWebEventsCount(logCapture.getWebEventsCount(), eventCounts);
+    }
+
+    public boolean checkWebKeyPresence(String key, int eventIndex){
+        return LogCompare.checkKey(key, logCapture.getLogs()[eventIndex]);
+    }
+
+    public void sendWebJS(String arg){
+        logCapture.SendJSScript(driver, arg);
+    }
+
+    public void waitForVisibility(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 }

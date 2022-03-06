@@ -1,12 +1,12 @@
 package pages.SamplePage;
 
-import base.PageObjectBase;
+import base.AndroidReactNativePageObjectBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class SamplePO extends PageObjectBase {
+public class SamplePO extends AndroidReactNativePageObjectBase {
 
     public SamplePO(){super();}
 

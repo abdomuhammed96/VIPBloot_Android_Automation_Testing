@@ -46,20 +46,24 @@ public class DriverFactory {
                         String.format("Driver Factory type not implemented: [%s]", platform));
         }
     }
+
     WebDriver createWebDriver() {
         String browser = config.getBrowser().toUpperCase();
         WebDriver driver;
 
-        switch (browser){
+        switch (browser) {
             case "CHROME":
                 WebDriverManager.chromedriver().reset();
                 WebDriverManager.chromedriver().setup();
 
                 LoggingPreferences preferences = new LoggingPreferences();
                 preferences.enable(LogType.BROWSER, Level.ALL);
+
                 ChromeOptions caps = new ChromeOptions();
                 caps.setCapability(CapabilityType.LOGGING_PREFS, preferences);
                 caps.setCapability("goog:loggingPrefs", preferences);
+                caps.addArguments("--no-sandbox");
+                caps.addArguments("--disable-dev-shm-usage");
                 caps.addArguments();
 
                 driver = new ChromeDriver(caps);
@@ -68,7 +72,7 @@ public class DriverFactory {
                 return driver;
 
             case "FIREFOX":
-                WebDriverManager.firefoxdriver().reset();
+/*                WebDriverManager.firefoxdriver().reset();
                 WebDriverManager.firefoxdriver().setup();
 
                 LoggingPreferences firefoxPreferences = new LoggingPreferences();
@@ -82,10 +86,10 @@ public class DriverFactory {
                 driver = new FirefoxDriver(firefoxCaps);
                 driver.manage().window().maximize();
                 driver.get(config.getUrl());
-                return driver;
+                return driver;*/
 
             case "EDGE":
-                WebDriverManager.edgedriver().reset();
+                /*WebDriverManager.edgedriver().reset();
                 WebDriverManager.edgedriver().setup();
 
                 LoggingPreferences edgePreferences = new LoggingPreferences();
@@ -103,7 +107,7 @@ public class DriverFactory {
                 driver = new EdgeDriver(edgeCaps);
                 driver.manage().window().maximize();
                 driver.get(config.getUrl());
-                return driver;
+                return driver;*/
             default:
                 throw new IllegalArgumentException(
                         String.format("Driver Factory type not implemented: [%s]", browser));

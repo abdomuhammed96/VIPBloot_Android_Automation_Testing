@@ -32,7 +32,7 @@ public class Config {
         platform = System.getProperty("PLATFORM", Prop.getProperty("PLATFORM"));
         setCapabilitiesForPlatform(platform);
 
-        Properties webProp = readPropertyFile("config/Web.properties");
+        Properties webProp = readPropertyFile("config/web.properties");
         browser = System.getProperty("Web", webProp.getProperty("Browser"));
     }
 
@@ -87,7 +87,7 @@ public class Config {
     }
 
     private void setWebCapabilities() {
-        Properties webProp = readPropertyFile("config/Web.properties");
+        Properties webProp = readPropertyFile("config/web.properties");
         url = webProp.getProperty("URL");
         LoggingPreferences logPrefs = new LoggingPreferences();
         logPrefs.enable(LogType.PERFORMANCE, Level.ALL);

@@ -49,6 +49,18 @@ public class LogCompare {
 		String jObjValue = jObj.get(key).getAsString();
 		if (jObjValue.equals(ExpectedValue))
 			return true;
+		System.out.println("Expected: " + ExpectedValue + " - Value: " + jObjValue);
+		return false;
+	}
+
+	/**
+	 * @author Shaher Amin
+	 *
+	 */
+	public static boolean checkKey(String key, JsonObject jObj) {
+		String jObjValue = jObj.get(key).getAsString();
+		if (jObj.get(key) != null)
+			return true;
 		return false;
 	}
 

@@ -3,49 +3,48 @@ package base;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
+
 import com.google.gson.JsonObject;
 import io.appium.java_client.MobileDriver;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.Logs;
 import org.testng.Assert;
 
 public class LogCapture {
-	private static JsonObject[] jsonList;
-	private static JsonObject jsonFLUSH;
-	private static int currentDbCount;
-	private static int flushCountSize;
-	private static int Total_event_size;
-	private static int Total_unique_event_size;
-	private static int webEventsCount;
+    private static JsonObject[] jsonList;
+    private static JsonObject jsonFLUSH;
+    private static int currentDbCount;
+    private static int flushCountSize;
+    private static int Total_event_size;
+    private static int Total_unique_event_size;
+    private static int webEventsCount;
 
-	public JsonObject getFLUSHEvent() {
-		return jsonFLUSH;
-	}
+    public JsonObject getFLUSHEvent() {
+        return jsonFLUSH;
+    }
 
-	public int getCurrentDbCount() {
-		return currentDbCount;
-	}
+    public int getCurrentDbCount() {
+        return currentDbCount;
+    }
 
-	public int getFlushCountSize() {
-		return flushCountSize;
-	}
+    public int getFlushCountSize() {
+        return flushCountSize;
+    }
 
-	public int getTotal_event_size() {
-		return Total_event_size;
-	}
+    public int getTotal_event_size() {
+        return Total_event_size;
+    }
 
-	public int getTotal_unique_event_size() {
-		return Total_unique_event_size;
-	}
+    public int getTotal_unique_event_size() {
+        return Total_unique_event_size;
+    }
 
-	public static int getWebEventsCount() {
-		return webEventsCount;
-	}
+    public static int getWebEventsCount() {
+        return webEventsCount;
+    }
 	/*
 	 * This class is responsible to capture logs from android emulator and Web Browser
 	 * after capturing the logs it start parsing the logs into events
@@ -69,41 +68,41 @@ public class LogCapture {
 	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB: }
 	*/
 
-	/**
-	 * @author Shaher Amin
-	 * @return the saved captured logs from android emulator 
-	 */
-	public JsonObject[] getLogs() {
-		return jsonList;
-	}
-	
-	/**
-	 * @author Shaher Amin
-	 * Clear log from android emulator
-	 */
-	public static void clearLog(){
+    /**
+     * @return the saved captured logs from android emulator
+     * @author Shaher Amin
+     */
+    public JsonObject[] getLogs() {
+        return jsonList;
+    }
+
+    /**
+     * @author Shaher Amin
+     * Clear log from android emulator
+     */
+    public static void clearLog() {
         try {
             Process process = new ProcessBuilder()
-            .command("logcat", "-c")
-            .redirectErrorStream(true)
-            .start();
-       } catch (IOException e) {
-       }
-   }
+                    .command("logcat", "-c")
+                    .redirectErrorStream(true)
+                    .start();
+        } catch (IOException e) {
+        }
+    }
 
-	public void SendJSScript(WebDriver driver, String arg) {
+    public void SendJSScript(WebDriver driver, String arg) {
 //		((JavascriptExecutor) driver).executeScript("sec.setUserID(\"test\")");
-		((JavascriptExecutor) driver).executeScript(arg);
-	}
+        ((JavascriptExecutor) driver).executeScript(arg);
+    }
 
-	/**
-	 * @author Shaher Amin
-	 * @param driver
-	 * @return Captured Logs from android emulator
-	 */
-	public JsonObject[] captureWebEvents(WebDriver driver) {
-		jsonList = new JsonObject[10];
-		List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
+    /**
+     * @param driver
+     * @return Captured Logs from android emulator
+     * @author Shaher Amin
+     */
+    public JsonObject[] captureWebEvents(WebDriver driver) {
+        jsonList = new JsonObject[10];
+        List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
 //		entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
 //		entries = driver.manage().logs().get(LogType.SERVER).getAll();
 
@@ -145,71 +144,118 @@ public class LogCapture {
 				"event-description":"{\"Netperform\":\"7.0\",\"Billing\":\"4.0\",\"TermAndCondition\":\"3.0\"}",
 				"page-name":"BootsApp | Home-http://localhost:3000/","subpage-name":"NA"}]
 		*/
-		for (LogEntry entry : entries) {
-			if (entry.getMessage().contains("current events count")){
+        for (LogEntry entry : entries) {
+            if (entry.getMessage().contains("current events count")) {
 //				System.out.println(entry.getMessage());
-				String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");;
-				webEventsCount = Integer.parseInt(EventsCount);
-			}
-			if (entry.getMessage().contains("[{") && entry.getMessage().contains("}]")){
-				int eventIndex = 0;
-				String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("[{"), entry.getMessage().length()-1);
-				String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
+                String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");
+                ;
+                webEventsCount = Integer.parseInt(EventsCount);
+            }
+            if (entry.getMessage().contains("[{") && entry.getMessage().contains("}]")) {
+                int eventIndex = 0;
+                String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("[{"), entry.getMessage().length() - 1);
+                String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
-				for (String event : msglist) {
-					jsonList[eventIndex] = new JsonObject();
-					String[] elements = event.split(",");
-					for (String element : elements) {
-						String key = null;
-						String value = null;
-						String[] elementList = StringUtils.substringsBetween(element, "\\\"", "\\\"");
-						try {
-							key =  elementList[0];
-							value = elementList[1];
-							jsonList[eventIndex].addProperty(key, value);
-						}
-						catch (NullPointerException e) {}
-						catch (ArrayIndexOutOfBoundsException e) {}
-					}
-					eventIndex++;
-				}
-			}
-		}
-		return jsonList;
-	}
+                for (String event : msglist) {
+                    jsonList[eventIndex] = new JsonObject();
+                    String[] elements = event.split(",");
+                    for (String element : elements) {
+                        String key = null;
+                        String value = null;
+                        String[] elementList = StringUtils.substringsBetween(element, "\\\"", "\\\"");
+                        try {
+                            key = elementList[0];
+                            value = elementList[1];
+                            jsonList[eventIndex].addProperty(key, value);
+                        } catch (NullPointerException e) {
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                        }
+                    }
+                    eventIndex++;
+                }
+            }
+        }
+        return jsonList;
+    }
 
-	/**
-	 * @author Shaher Amin
-	 * @param driver
-	 * @return Captured Logs from android emulator
-	 */
-	public JsonObject[] captureEvents(MobileDriver driver) {
-		jsonList = new JsonObject[10];
-		jsonFLUSH = new JsonObject();
+    /**
+     * @param driver
+     * @return Captured Logs from android emulator
+     * @author Shaher Amin
+     */
+    public JsonObject[] captureAndroidNativeEvents(WebDriver driver) {
+        jsonList = new JsonObject[10];
+        jsonFLUSH = new JsonObject();
 
-    	List<LogEntry> logEntries = driver.manage().logs().get("logcat").filter(Level.ALL);
-    	int eventIndex = 0;
+        List<LogEntry> entries = driver.manage().logs().get("logcat").filter(Level.ALL);
+        int eventIndex = 0;
 
-    	for (int j = 0; j < logEntries.size(); j++) {
-    		String key = null;
-    		String value = null;
-			String msg = logEntries.get(j).getMessage();
+        for (LogEntry entry : entries) {
+//			if (entry.getMessage().contains("current events count")){
+//				System.out.println(entry.getMessage());
+//				String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");;
+//				webEventsCount = Integer.parseInt(EventsCount);
+//			}
+            if (entry.getMessage().contains("seclibng.interfaces.CoreManager: {") && entry.getMessage().contains("}")) {
+//				int eventIndex = 0;
+                String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("{") + 1, entry.getMessage().length() - 1);
+//				String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
-			if (msg.contains("SqliteDB: currentDbCount")) {
-				currentDbCount = Integer.parseInt(msg.substring(msg.lastIndexOf("currentDbCount:")+"currentDbCount:".length(), msg.length()));
-			}
-			if (msg.contains("SqliteDB: flushCountSize")) {
-				flushCountSize = Integer.parseInt(msg.substring(msg.lastIndexOf("flushCountSize:")+"flushCountSize:".length(), msg.length()));
-			}
-			if (msg.contains("ProtocolTag: Total event size")) {
-				Total_event_size = Integer.parseInt(msg.substring(msg.lastIndexOf("Total event size:")+"Total event size:".length(), msg.length()));
-			}
-			if (msg.contains("ProtocolTag: Total unique event size")) {
-				Total_unique_event_size = Integer.parseInt(msg.substring(msg.lastIndexOf("Total unique event size:")+"Total unique event size:".length(), msg.length()));
-			}
-			///////////////////////////////////////////////Event Capture//////////////////////////////////////////////////////
-			// Capture Flush Event
-			// "Protocol.sendEvents: Sending Events with Headers: {"
+//				for (String event : msglist) {
+                jsonList[eventIndex] = new JsonObject();
+                String[] elements = msg.split(",");
+                for (String element : elements) {
+                    String key = null;
+                    String value = null;
+                    String[] elementList = StringUtils.substringsBetween(element, "\"", "\"");
+                    try {
+                        key = elementList[0];
+                        value = elementList[1];
+                        jsonList[eventIndex].addProperty(key, value);
+                    } catch (NullPointerException e) {
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                    }
+                }
+//				}
+                eventIndex++;
+            }
+
+        }
+        return jsonList;
+    }
+
+    /**
+     * @param driver
+     * @return Captured Logs from android emulator
+     * @author Shaher Amin
+     */
+    public JsonObject[] captureAndroidRNEvents(MobileDriver driver) {
+        jsonList = new JsonObject[10];
+        jsonFLUSH = new JsonObject();
+
+        List<LogEntry> logEntries = driver.manage().logs().get("logcat").filter(Level.ALL);
+        int eventIndex = 0;
+
+        for (int j = 0; j < logEntries.size(); j++) {
+            String key = null;
+            String value = null;
+            String msg = logEntries.get(j).getMessage();
+
+            if (msg.contains("SqliteDB: currentDbCount")) {
+                currentDbCount = Integer.parseInt(msg.substring(msg.lastIndexOf("currentDbCount:") + "currentDbCount:".length(), msg.length()));
+            }
+            if (msg.contains("SqliteDB: flushCountSize")) {
+                flushCountSize = Integer.parseInt(msg.substring(msg.lastIndexOf("flushCountSize:") + "flushCountSize:".length(), msg.length()));
+            }
+            if (msg.contains("ProtocolTag: Total event size")) {
+                Total_event_size = Integer.parseInt(msg.substring(msg.lastIndexOf("Total event size:") + "Total event size:".length(), msg.length()));
+            }
+            if (msg.contains("ProtocolTag: Total unique event size")) {
+                Total_unique_event_size = Integer.parseInt(msg.substring(msg.lastIndexOf("Total unique event size:") + "Total unique event size:".length(), msg.length()));
+            }
+            ///////////////////////////////////////////////Event Capture//////////////////////////////////////////////////////
+            // Capture Flush Event
+            // "Protocol.sendEvents: Sending Events with Headers: {"
 			/*
 			2021-12-15 11:40:21.358 10671-10710/com.vodafone.react.smapi.test I/SecLib:SqliteDB: currentDbCount:8
 			2021-12-15 11:40:21.358 10671-10710/com.vodafone.react.smapi.test I/SecLib:SqliteDB: flushCountSize:10
@@ -236,57 +282,57 @@ public class LogCapture {
 				"x-vf-trace-locale": "US"
 			}
 			*/
-			if (msg.contains("Protocol.sendEvents: Sending Events with Headers: {")) {
-				jsonFLUSH = new JsonObject();
-				for (int i = j+1; i < logEntries.size(); i++) {
-					String logMsg = logEntries.get(i).getMessage();
-					if (logMsg.contains("SecLib:Protocol.sendEvents: }")) {
-						j=i;
-						break;
-					}
-					String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
-					key =  slist[0];
-					value = slist[1];
-					jsonFLUSH.addProperty(key, value);
-				}
-			}
-			// Capture Normal Event
-    		// filter in logEntries List on the String contains Seclib
-    		if (msg.contains("SecLib:SqliteDB: {")) {
-				jsonList[eventIndex] = new JsonObject();
-    			//when the it contains "SecLib:SqliteDB: {" thant means I capurted the first line in the event
-    			for (int i = j+1; i < logEntries.size(); i++) {
-	    			//loop on the following lines to capture an events and ends when it contains "}"
-    				String logMsg = logEntries.get(i).getMessage();
+            if (msg.contains("Protocol.sendEvents: Sending Events with Headers: {")) {
+                jsonFLUSH = new JsonObject();
+                for (int i = j + 1; i < logEntries.size(); i++) {
+                    String logMsg = logEntries.get(i).getMessage();
+                    if (logMsg.contains("SecLib:Protocol.sendEvents: }")) {
+                        j = i;
+                        break;
+                    }
+                    String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
+                    key = slist[0];
+                    value = slist[1];
+                    jsonFLUSH.addProperty(key, value);
+                }
+            }
+            // Capture Normal Event
+            // filter in logEntries List on the String contains Seclib
+            if (msg.contains("SecLib:SqliteDB: {")) {
+                jsonList[eventIndex] = new JsonObject();
+                //when the it contains "SecLib:SqliteDB: {" thant means I capurted the first line in the event
+                for (int i = j + 1; i < logEntries.size(); i++) {
+                    //loop on the following lines to capture an events and ends when it contains "}"
+                    String logMsg = logEntries.get(i).getMessage();
 
-    				if (logMsg.contains("SecLib:SqliteDB: }")) {
-    					eventIndex++;
-    					j=i;
-    					break;
-    				}
-    				// Parsing the line to catch the key in the event and its value
-					/*
-					 * Example
-					 *
-					 * 10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-type": "Application",
-					 * Key = event-type
-					 * Value = Application
-					*/
-    				String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
-    				try {
-    					key =  slist[0];
-        				value = slist[1];
-					} catch (ArrayIndexOutOfBoundsException e) {
-						if (key.equals("x-vf-trace-timestamp"))
-							value = "NA";
-						else {
-							Assert.assertNull(slist[0], "No Key found");
-						}
-					}
-					jsonList[eventIndex].addProperty(key, value);
-    			}
-    		}
-		}
-    	return jsonList;
+                    if (logMsg.contains("SecLib:SqliteDB: }")) {
+                        eventIndex++;
+                        j = i;
+                        break;
+                    }
+                    // Parsing the line to catch the key in the event and its value
+                    /*
+                     * Example
+                     *
+                     * 10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-type": "Application",
+                     * Key = event-type
+                     * Value = Application
+                     */
+                    String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
+                    try {
+                        key = slist[0];
+                        value = slist[1];
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        if (key.equals("x-vf-trace-timestamp"))
+                            value = "NA";
+                        else {
+                            Assert.assertNull(slist[0], "No Key found");
+                        }
+                    }
+                    jsonList[eventIndex].addProperty(key, value);
+                }
+            }
+        }
+        return jsonList;
     }
 }
