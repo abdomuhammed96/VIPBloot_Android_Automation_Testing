@@ -35,4 +35,27 @@ public class MainPO extends AndroidNativePageObjectBase {
     })
     public MobileElement Log_Custom_Components;
 
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/button_first"),
+    })
+    public MobileElement Next;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_network_activity"),
+    })
+    public MobileElement NetworkBtn;
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_set_user_id"),
+    })
+    public MobileElement SetUserIdPageBtn;
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_image_execlusion"),
+    })
+    public MobileElement ImageExclusionBtn;
+
+
 }
