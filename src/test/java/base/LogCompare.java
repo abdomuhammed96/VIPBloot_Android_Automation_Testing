@@ -53,6 +53,13 @@ public class LogCompare {
 		return false;
 	}
 
+	public static boolean checkValueIsNotNull(String key, JsonObject jObj) {
+		String jObjValue = jObj.get(key).getAsString();
+		if (jObjValue==null ||  jObjValue == "NA")
+			return false;
+		return true;
+	}
+
 	/**
 	 * @author Shaher Amin
 	 *

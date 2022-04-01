@@ -21,6 +21,7 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
         return ValidateElementValue(key, value, eventIndex);
     }
 
+
     @Override
     public void clickOnButton(String arg0) {
         switch (arg0){
@@ -43,6 +44,24 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
             case "Log_Custom_Components":
                 waitForVisibility(Log_Custom_Components);
                 Log_Custom_Components.click();
+                break;
+            case "NEXT":
+                waitForVisibility(Next);
+                Next.click();
+                break;
+            case "Network_Button":
+                waitForVisibility(NetworkBtn);
+                NetworkBtn.click();
+                break;
+
+            case "Open_UserIdPage_Button":
+                waitForVisibility(SetUserIdPageBtn);
+                SetUserIdPageBtn.click();
+                break;
+
+            case "ImageExclusionBtn":
+                waitForVisibility(ImageExclusionBtn);
+                ImageExclusionBtn.click();
                 break;
             default:
         }

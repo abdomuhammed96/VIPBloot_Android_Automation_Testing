@@ -70,7 +70,7 @@ public abstract class AndroidReactNativePageObjectBase {
 
     public Boolean captureNoEvents() {
         JsonObject[] jsonList = logCapture.captureAndroidRNEvents(driver);
-        if (jsonList[0] == null)
+        if (jsonList[0]== null)
             return true;
         return false;
     }

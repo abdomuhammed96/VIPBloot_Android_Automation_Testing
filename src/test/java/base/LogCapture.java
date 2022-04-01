@@ -198,7 +198,7 @@ public class LogCapture {
 //			}
             if (entry.getMessage().contains("seclibng.interfaces.CoreManager: {") && entry.getMessage().contains("}")) {
 //				int eventIndex = 0;
-                String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("{") + 1, entry.getMessage().length() - 1);
+                String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("seclibng.interfaces.CoreManager: {") + 1, entry.getMessage().length() - 1);
 //				String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
 //				for (String event : msglist) {

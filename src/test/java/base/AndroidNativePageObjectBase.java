@@ -4,6 +4,10 @@ import com.google.gson.JsonObject;
 import core.Config;
 import core.Hooks;
 import io.appium.java_client.MobileDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -66,7 +70,26 @@ public abstract class AndroidNativePageObjectBase {
         return false;
     }
 
+
+    public  void clickOnBackButton()
+    {
+        ((AndroidDriver) driver).pressKey((new KeyEvent(AndroidKey.BACK)));
+
+    }
+
+
+    public void WriteInTexbox(MobileElement Textbox,String text)
+    {
+        Textbox.sendKeys(text);
+    }
+
+
+
     public boolean ValidateElementValue(String key, String value, int eventIndex) {
         return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
+
+        }
+    public boolean checkValueIsNotNull(String key, int eventIndex) {
+        return LogCompare.checkValueIsNotNull(key, logCapture.getLogs()[eventIndex]);
     }
 }

@@ -26,7 +26,7 @@ Feature: check Network event
     When Capture Events;
     When Scroll and click "Slow request delay 10 secs"
     When Capture Events;
-    Then No Events Captured
+
 
   Scenario: Check [Axios] Postman Echo Example Network Events when Netw off
     Given User opens App
