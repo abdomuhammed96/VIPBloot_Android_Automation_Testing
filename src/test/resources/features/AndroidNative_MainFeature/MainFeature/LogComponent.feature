@@ -44,7 +44,7 @@ Feature: check LogComponent Feature
     Then Check Element value is not null ["x-vf-trace-session-id" 2]
     Then Check Element value is not null ["event-description" 2]
     Then Check Element value ["page-name" "MainActivity" 2]
-    Then Check Element value ["subpage-name" "NA" 2]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.FirstFragment" 2]
     Then Check Element value ["x-vf-trace-tid" "NA" 2]
     Then Check Element value ["x-vf-user-id" "NA" 2]
     Then Check Element value ["x-vf-net-band" "NA" 2]
@@ -105,7 +105,7 @@ Feature: check LogComponent Feature
     Then Capture Android Native Events
     Then Check Element value ["event-type" "UICustom" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "MaterialButton:btn_add" 1]
+    Then Check Element value ["event-element" "Component" 1]
     Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
     Then Check Element value is not null ["x-vf-trace-timestamp" 1]
     Then Check Element value is not null ["x-vf-trace-session-id" 1]
@@ -114,4 +114,4 @@ Feature: check LogComponent Feature
     Then Check Element value ["x-vf-trace-tid" "NA" 1]
     Then Check Element value ["x-vf-user-id" "NA" 1]
     Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value ["event-description" "Pressed on Add" 1]
+#    Then Check Element value ["event-description" "Pressed on Add" 1]

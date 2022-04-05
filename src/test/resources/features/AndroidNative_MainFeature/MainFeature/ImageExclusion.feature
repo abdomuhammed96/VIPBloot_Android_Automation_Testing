@@ -57,6 +57,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check UIControl Event when clicking on OKHTTP3_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on"]
     Then Click On a Button On Image Exclusion Page ["OKHTTP3_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -71,8 +72,9 @@ Feature: check Image Exclusion Feature
   Scenario: Check Network Event when clicking on OKHTTP3_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
     Then Click On a Button On Image Exclusion Page ["OKHTTP3_Download_Image"]
-    Then Check No Network Events Captured
+    Then Check Number of Events Captured [1]
     Then Click On a Button On Image Exclusion Page ["OKHTTP3_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
@@ -120,6 +122,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check UIControl Event when clicking on OKHTTP2_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on"]
     Then Click On a Button On Image Exclusion Page ["OKHTTP2_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -134,6 +137,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check Network Event when clicking on OKHTTP2_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
     Then Click On a Button On Image Exclusion Page ["OKHTTP2_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
@@ -184,6 +188,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check UIControl Event when clicking on Retrofit_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on"]
     Then Click On a Button On Image Exclusion Page ["Retrofit_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -198,6 +203,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check Network Event when clicking on Retrofit_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on/"]
     Then Click On a Button On Image Exclusion Page ["Retrofit_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
@@ -246,6 +252,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check UIControl Event when clicking on URL_Connection_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on"]
     Then Click On a Button On Image Exclusion Page ["URL_Connection_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -260,6 +267,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check Network Event when clicking on URL_Connection_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png/"]
     Then Click On a Button On Image Exclusion Page ["URL_Connection_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
@@ -307,6 +315,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check UIControl Event when clicking on Volley_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on"]
     Then Click On a Button On Image Exclusion Page ["Volley_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -321,6 +330,7 @@ Feature: check Image Exclusion Feature
   Scenario: Check Network Event when clicking on Volley_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png/"]
     Then Click On a Button On Image Exclusion Page ["Volley_Download_Image"]
+    Then Pause Time "3000" ms
     When Capture Android Native Events
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]

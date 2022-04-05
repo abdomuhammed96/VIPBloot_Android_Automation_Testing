@@ -31,11 +31,11 @@ Feature: check User Id Feature
     Then Check Element value is not null ["x-vf-trace-session-id" 1]
     Then Check Element value is not null ["event-description" 1]
     Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "NA" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.SecondFragment" 1]
     Then Check Element value ["x-vf-trace-tid" "NA" 1]
     Then Check Element value ["x-vf-user-id" "NA" 1]
     Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.FirstFragment" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.SecondFragment" 1]
 
 
   Scenario: Check Page Event - Load Time for User Id fragment - after clicking on "User Id" button on Main Page
@@ -55,7 +55,6 @@ Feature: check User Id Feature
 
   Scenario: Check UIControl Event after clicking on "Set User Id" btn on User Id page
     When Click On a Button On User Id Page ["Set_User_Id"]
-    And
     Then Capture Android Native Events
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
