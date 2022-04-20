@@ -58,4 +58,12 @@ public class MainPO extends AndroidNativePageObjectBase {
     public MobileElement ImageExclusionBtn;
 
 
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_create_event"),
+    })
+    public MobileElement Custom_Event;
+
+
+
 }

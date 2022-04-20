@@ -65,6 +65,10 @@ public class NetworkPO extends AndroidNativePageObjectBase {
     })
     public MobileElement CUSTOM_NETWORK_EVENT;
 
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/cb_networkOn"),
+    })
+    public MobileElement Network_On_Off;
 
 
 }

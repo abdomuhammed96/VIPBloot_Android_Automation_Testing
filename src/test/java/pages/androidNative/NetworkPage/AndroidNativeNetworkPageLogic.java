@@ -70,6 +70,11 @@ public class AndroidNativeNetworkPageLogic extends AndroidNativeNetworkPageAbstr
                 waitForVisibility(CUSTOM_NETWORK_EVENT);
                 CUSTOM_NETWORK_EVENT.click();
                 break;
+            case "Network_On_Off":
+                waitForVisibility(Network_On_Off);
+                Network_On_Off.click();
+                break;
+
             default:
         }
 

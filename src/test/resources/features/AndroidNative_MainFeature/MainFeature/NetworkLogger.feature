@@ -1,4 +1,4 @@
-Feature: check Network Events
+Feature: check Network Events when network is on
 
   Background: User Opens App and Capture Events
     When Capture Android Native Events
@@ -411,4 +411,74 @@ Feature: check Network Events
     Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
     Then Check Element value is not null ["x-vf-trace-timestamp" 2]
     Then Check Element value is not null ["x-vf-trace-session-id" 2]
-  ########################################
+  ######################################## Network logger is off #############################
+
+  Scenario: Check No Network event is capture when clicking on OKHTTP3_GET_REQUEST button and
+    network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["OKHTTP3_GET_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on OKHTTP3_POST_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["OKHTTP3_POST_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on OKHTTP2_GET_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["OKHTTP2_GET_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on OKHTTP2_POST_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["OKHTTP2_POST_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on RETROFIT_WITH_OKHTTP2 button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["RETROFIT_WITH_OKHTTP2"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on URL_CONNECTION_GET_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["URL_CONNECTION_GET_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on URL_CONNECTION_POST_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["URL_CONNECTION_POST_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on VOLLEY_GET_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["VOLLEY_GET_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on VOLLEY_POST_REQUEST button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["VOLLEY_POST_REQUEST"]
+    Then Check Number of Events Captured [1]
+
+  Scenario: Check No Network event is capture when clicking on CUSTOM_NETWORK_EVENT button and
+  network is off
+    When Click On Network Button ["Network_On_Off"]
+    When Capture Android Native Events
+    When Click On Network Button ["CUSTOM_NETWORK_EVENT"]
+    Then Check Number of Events Captured [2]

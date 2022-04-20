@@ -7,7 +7,6 @@ Feature: check User Id Feature
     When Capture Android Native Events
 
   Scenario: Check UIControl Event after clicking on "Set Random User Id" button on Main Page
-    Then Click Back Button
     Then Check Element value ["event-type" "UIControl" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
     Then Check Element value ["event-element" "MaterialButton:btn_set_user_id" 0]
@@ -21,8 +20,8 @@ Feature: check User Id Feature
     Then Check Element value ["x-vf-net-band" "NA" 0]
     Then Check Element value ["event-description" "Pressed on Set Random User Id" 0]
 
-  Scenario: Check Page Event - Stay Time for First Fragment on Main activity
-  - after clicking on "Log Component" button on Main Page
+  Scenario: Check Page Event - Stay Time for Second Fragment on Main activity
+  - after clicking on "User ID" button on Main Page
     Then Check Element value ["event-type" "Page" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
     Then Check Element value ["event-element" "Stay Time" 1]

@@ -63,6 +63,11 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
                 waitForVisibility(ImageExclusionBtn);
                 ImageExclusionBtn.click();
                 break;
+            case "Custom_Event":
+                waitForVisibility(Custom_Event);
+                Custom_Event.click();
+                break;
+
             default:
         }
     }
