@@ -1,9 +1,31 @@
 package base;
 
+/*
+	 * This class is responsible to capture logs from android emulator and Web Browser
+	 * after capturing the logs it start parsing the logs into events
+	 *
+	 * Example of event:
+	 *
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-type": "Application",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "device-orientation": "Portrait",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-transaction-id": "5e82bcf5-00f9-4ee3-af4c-802673251a19",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-timestamp": 1633350268535,
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-session-id": "50195252-8742-45b9-8a7d-45877faa83ce",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-net-type": "WiFi",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-net-band": "NA",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-app-state": "Foreground",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-description": "6.739 sec",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-element": "AppLaunch",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "page-name": "Main",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "subpage-name": "NA",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-user-id": "NA",
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-tid": "NA"
+	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB: }
+	*/
+
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
-
 import com.google.gson.JsonObject;
 import io.appium.java_client.MobileDriver;
 import org.apache.commons.lang3.StringUtils;
@@ -45,28 +67,6 @@ public class LogCapture {
     public static int getWebEventsCount() {
         return webEventsCount;
     }
-	/*
-	 * This class is responsible to capture logs from android emulator and Web Browser
-	 * after capturing the logs it start parsing the logs into events
-	 * 
-	 * Example of event:
-	 * 
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-type": "Application",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "device-orientation": "Portrait",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-transaction-id": "5e82bcf5-00f9-4ee3-af4c-802673251a19",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-timestamp": 1633350268535,
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-session-id": "50195252-8742-45b9-8a7d-45877faa83ce",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-net-type": "WiFi",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-net-band": "NA",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-app-state": "Foreground",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-description": "6.739 sec",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "event-element": "AppLaunch",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "page-name": "Main",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "subpage-name": "NA",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-user-id": "NA",
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB:   "x-vf-trace-tid": "NA"
-	10-04 14:24:29.817 15654 15704 I SecLib:SqliteDB: }
-	*/
 
     /**
      * @return the saved captured logs from android emulator
@@ -329,6 +329,43 @@ public class LogCapture {
                             Assert.assertNull(slist[0], "No Key found");
                         }
                     }
+                    jsonList[eventIndex].addProperty(key, value);
+                }
+            }
+        }
+        return jsonList;
+    }
+
+    public JsonObject[] captureIOSEvents(MobileDriver driver) {
+        jsonList = new JsonObject[10];
+        jsonFLUSH = new JsonObject();
+
+//        List<LogEntry> logEntries = driver.manage().logs().get(LogType.SERVER).getAll();
+        List<LogEntry> logEntries = driver.manage().logs().get("syslog").getAll();
+        int eventIndex = 0;
+
+        for (int j = 0; j < logEntries.size(); j++) {
+            String key = null;
+            String value = null;
+            String msg = logEntries.get(j).getMessage();
+
+            if (msg.contains("SecLib: ") && logEntries.get(j+1).getMessage().equals("{")) {
+                jsonList[eventIndex] = new JsonObject();
+                for (int i = j + 2; i < logEntries.size(); i++) {
+                    String logMsg = logEntries.get(i).getMessage();
+
+                    if (logMsg.equals("}")) {
+                        eventIndex++;
+                        j = i;
+                        break;
+                    }
+                    String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
+                    try {
+                        key = slist[0];
+                        value = slist[1];
+                    }
+                    catch (ArrayIndexOutOfBoundsException e) {}
+                    catch (NullPointerException e) {}
                     jsonList[eventIndex].addProperty(key, value);
                 }
             }

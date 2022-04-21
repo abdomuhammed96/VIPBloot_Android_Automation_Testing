@@ -56,10 +56,16 @@ public class Config {
         capabilities.put("platformVersion", iosProp.getProperty("PLATFORM_VERSION"));
         capabilities.put("platformName", "iOS");
         capabilities.put("noReset", false);
-        capabilities.put("app", System.getProperty("app.Android", iosProp.getProperty("app.Android")));
+        capabilities.put("app", System.getProperty("IOS", iosProp.getProperty("APP")));
         capabilities.put("automationName", "XCUITest");
         capabilities.put("udid", System.getProperty("UDID", iosProp.getProperty("UDID")));
-        capabilities.put("bundleId", "com.VIS.myvodafoneUK");
+//        capabilities.put("bundleId", "com.VIS.myvodafoneUK");
+        capabilities.put("showIOSLog", "true");
+        capabilities.put("skipLogCapture", "false");
+        capabilities.put("fullContextList", "true");
+        capabilities.put("browserName", "SampleApp");
+        capabilities.put("showXcodeLog", "true");
+        capabilities.put("setValue", true);
 
     }
 
@@ -132,6 +138,7 @@ public class Config {
     public boolean isMobile() {
         return isMobile;
     }
+
     public boolean isWeb() {
         return isWeb;
     }

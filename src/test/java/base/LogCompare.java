@@ -2,6 +2,8 @@ package base;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
@@ -77,6 +79,22 @@ public class LogCompare {
 	public static boolean checkWebEventsCount(int eventsCount, int expectedEventsCount) {
 		if (eventsCount == expectedEventsCount)
 			return true;
+		return false;
+	}
+
+	public static boolean checkEventCount(int eventCount, JsonObject[] logs) {
+		int actualCount = Math.toIntExact(Arrays.stream(logs).filter(e -> e != null).count());
+		if (actualCount == eventCount)
+			return true;
+		System.out.println("Expected: " + eventCount + " - Value: " + actualCount);
+		return false;
+	}
+
+	public static boolean validateNoCapturedEvents(JsonObject[] logs) {
+		int actualCount = Math.toIntExact(Arrays.stream(logs).filter(e -> e != null).count());
+		if (actualCount == 0)
+			return true;
+		System.out.println("Expected: " + 0 + " - Value: " + actualCount);
 		return false;
 	}
 }

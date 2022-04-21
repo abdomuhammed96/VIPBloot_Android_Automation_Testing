@@ -4,24 +4,21 @@ import com.google.gson.JsonObject;
 import core.Config;
 import core.Hooks;
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public abstract class AndroidNativePageObjectBase {
+public abstract class IOSPageObjectBase {
     public MobileDriver driver;
     WebDriverWait wait;
     LogCapture logCapture = new LogCapture();
 
-    public AndroidNativePageObjectBase() {
+    public IOSPageObjectBase() {
         this.driver = Hooks.getDriver();
         setDecoratorBasedOnPlatform();
         wait = new WebDriverWait(driver, 30);
@@ -53,7 +50,7 @@ public abstract class AndroidNativePageObjectBase {
             Thread.sleep(10000);
         } catch (Exception ign) {
         }
-        JsonObject[] jsonList = logCapture.captureAndroidNativeEvents(driver);
+        JsonObject[] jsonList = logCapture.captureIOSEvents(driver);
         try {
             Thread.sleep(3000);
         } catch (Exception ign) {
@@ -62,33 +59,21 @@ public abstract class AndroidNativePageObjectBase {
         return jsonList;
     }
 
-    public Boolean captureNoEvents() {
-        JsonObject[] jsonList = logCapture.captureAndroidNativeEvents(driver);
-        if (jsonList[0] == null)
-            return true;
-        return false;
-    }
-
-
-    public  void clickOnBackButton()
-    {
-        ((AndroidDriver) driver).pressKey((new KeyEvent(AndroidKey.BACK)));
-
-    }
-
-
-    public void WriteInTexbox(MobileElement Textbox,String text)
-    {
-        Textbox.sendKeys(text);
-    }
-
-
-
     public boolean ValidateElementValue(String key, String value, int eventIndex) {
         return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
-
-        }
-    public boolean checkValueIsNotNull(String key, int eventIndex) {
-        return LogCompare.checkValueIsNotNull(key, logCapture.getLogs()[eventIndex]);
     }
+
+    public boolean ValidateElementExistence(String key, int eventIndex) {
+        return LogCompare.checkKey(key, logCapture.getLogs()[eventIndex]);
+    }
+
+    public boolean ValidateElementCounts(int eventCount) {
+        return LogCompare.checkEventCount(eventCount, logCapture.getLogs());
+    }
+
+    public boolean validateNoCapturedEvents() {
+        return LogCompare.validateNoCapturedEvents(logCapture.getLogs());
+    }
+
+
 }
