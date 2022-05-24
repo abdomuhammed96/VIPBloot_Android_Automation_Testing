@@ -59,4 +59,9 @@ public class IOSStepdefs {
         softAssert.assertTrue(page.checkNoCapturedEvents());
         softAssert.assertAll();
     }
+
+//    @When("Click on IOS button by class [{string}]")
+//    public void clickOnIOSButtonByClass(String arg0) {
+//        page.pressButton(arg0);
+//    }
 }

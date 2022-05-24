@@ -6,8 +6,13 @@ Feature: web demo
     Then Click on ["Change Storage Type"]
     Then Click on ["Change Storage Type"]
     Then Click on ["Change Storage Type"]
+    Then Click on ["Change Storage Type"]
+    Then Click on ["Change Storage Type"]
+    Then Click on ["Change Storage Type"]
+    Then Click on ["Change Storage Type"]
+    Then Click on ["Change Storage Type"]
     Then Capture WEB Events
-    Then Check WEB Events Count equal [10]
+    Then Check WEB Events Count equal [15]
     Then Click on ["Change Storage Type"]
     Then Capture WEB Events
     Then Check WEB Events Count equal [1]

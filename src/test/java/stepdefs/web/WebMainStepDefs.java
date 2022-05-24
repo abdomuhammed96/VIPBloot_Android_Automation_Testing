@@ -106,13 +106,76 @@ public class WebMainStepDefs {
                 page.ClickOnElement(page.NOT_MSISDN);
                 break;
             case "Change Storage Type":
+                page.ScrollToAnElement(page.Change_Storage_Type);
                 page.ClickOnElement(page.Change_Storage_Type);
                 break;
             case "Get Started":
+                page.ScrollToAnElement(page.getStarted);
                 page.ClickOnElement(page.getStarted);
+                break;
+            case "Click on Fire SubPage":
+                page.ScrollToAnElement(page.Click_On_Fire_Event_With_Subpage);
+                page.ClickOnElement(page.Click_On_Fire_Event_With_Subpage);
+                break;
+            case "Click on Fire SubPage Others":
+                page.ScrollToAnElement(page.Click_On_Fire_Event_With_Subpage_Others);
+                page.ClickOnElement(page.Click_On_Fire_Event_With_Subpage_Others);
+                break;
+            case "Add Bug English":
+                page.ScrollToAnElement(page.Add_Bug_English);
+                page.ClickOnElement(page.Add_Bug_English);
+                break;
+            case "Add Bug Arabic":
+                page.ScrollToAnElement(page.Add_Bug_Arabic);
+                page.ClickOnElement(page.Add_Bug_Arabic);
+                break;
+            case "Fire Event Clicked":
+                page.ScrollToAnElement(page.Fire_Event_Clicked);
+                page.ClickOnElement(page.Fire_Event_Clicked);
+                break;
+            case "Upload Image":
+                page.ScrollToAnElement(page.Upload_Image);
+                page.ClickOnElement(page.Upload_Image);
+                break;
+            case "Upload Image Arabic":
+                page.ScrollToAnElement(page.Upload_Image_Arabic);
+                page.ClickOnElement(page.Upload_Image_Arabic);
+                break;
+            case "Click On Image":
+                page.ScrollToAnElement(page.Click_On_Image);
+                page.ClickOnElement(page.Click_On_Image);
+                break;
+            case "Click On Image Arabic":
+                page.ScrollToAnElement(page.Click_On_Image_Arabic);
+                page.ClickOnElement(page.Click_On_Image_Arabic);
+                break;
+            case "Click On Cancel":
+                page.ScrollToAnElement(page.Click_On_Cancel);
+                page.ClickOnElement(page.Click_On_Cancel);
+                break;
+            case "Click On Cancel Arabic":
+                page.ScrollToAnElement(page.Click_On_Cancel_Arabic);
+                page.ClickOnElement(page.Click_On_Cancel_Arabic);
+                break;
+            case "Click On SubmitRequest":
+                page.ScrollToAnElement(page.Click_On_Submit_Request);
+                page.ClickOnElement(page.Click_On_Submit_Request);
+                break;
+            case "Click On SubmitRequest Arabic":
+                page.ScrollToAnElement(page.Click_On_Submit_Request_Arabic);
+                page.ClickOnElement(page.Click_On_Submit_Request_Arabic);
+                break;
+            case "Click On Cancel Report":
+                page.ScrollToAnElement(page.Click_On_Cancel_Report);
+                page.ClickOnElement(page.Click_On_Cancel_Report);
                 break;
             default:
         }
+    }
+
+    @Then("Open new Tab and close")
+    public void openNewTabAndClose() {
+        page.openCloseNewTab();
     }
 
     /*

@@ -2,11 +2,14 @@ package base;
 
 import com.google.gson.JsonObject;
 import core.Hooks;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Set;
 
 public abstract class WebPageObjectBase {
     public WebDriver driver;
@@ -45,4 +48,9 @@ public abstract class WebPageObjectBase {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void openAndCloseNewTab() {
+        String base = driver.getWindowHandle();
+        ((JavascriptExecutor)driver).executeScript("window.open()");
+        driver.switchTo().window(base);
+    }
 }

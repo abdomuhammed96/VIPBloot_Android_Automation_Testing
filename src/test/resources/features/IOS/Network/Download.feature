@@ -36,5 +36,5 @@ Feature: check SMAPI URLSessiion
     Then Check Element value ["x-vf-net-type" "WiFi" 1]
     Then Check Element existed ["x-vf-trace-transaction-id" 1]
     Then Check Element value ["subpage-name" "NA" 1]
-    Then Check Element value ["event-description" "{\n  \"responseTimeinMS\" : \"4798\",\n  \"responseMessage\" : \"OK\",\n  \"responseContentType\" : \"image\\\/jpeg\",\n  \"requestDate\" : \"Tue, 12-Apr-2022 10:11 PM GMT+2\",\n  \"responseCode\" : 200,\n  \"endPoint\" : \"https:\\\/\\\/cdn.arstechnica.net\\\/wp-content\\\/uploads\\\/2018\\\/06\\\/macOS-Mojave-Dynamic-Wallpaper-transition.jpg\"\n}" 1]
+    Then Check Element value ["event-description" "200" 1]
     Then Check Element value ["page-name" "Session VC" 1]

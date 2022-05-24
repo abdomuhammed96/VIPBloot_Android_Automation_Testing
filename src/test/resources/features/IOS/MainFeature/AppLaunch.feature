@@ -15,10 +15,10 @@ Feature: check AppLaunch event
     Then Check Element value ["x-vf-user-id" "NA" 0]
     Then Check Element value ["x-vf-net-band" "NA" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["page-name" "NA" 0]
+    Then Check Element value ["page-name" "Main Page VC" 0]
     Then Check Element value ["subpage-name" "NA" 0]
     Then Check Element existed ["x-vf-trace-session-id" 0]
-    Then Check Element value ["x-vf-app-state" "Background" 0]
+    Then Check Element value ["x-vf-app-state" "Foreground" 0]
 
   Scenario: Check 2nd App Launch Event
     Then Check Element existed ["x-vf-trace-transaction-id" 1]

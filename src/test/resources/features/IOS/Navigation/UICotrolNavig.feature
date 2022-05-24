@@ -7,7 +7,7 @@ Feature: check SMAPI Navigation
 
   Scenario: Check 1st navigation event to UIControl
     Then Check Element value ["event-element" "UITableView" 0]
-    Then Check Element value ["event-description" "Swiped on Position row 0 0] sec: 0 0]  direction none" 0]
+    Then Check Element value ["event-description" "Swiped on Position row : 0, sec: 0,  direction none" 0]
     Then Check Element value ["x-vf-trace-tid" "NA" 0]
     Then Check Element value ["subpage-name" "NA" 0]
     Then Check Element value ["page-name" "Main Page VC" 0]
@@ -16,7 +16,6 @@ Feature: check SMAPI Navigation
     Then Check Element value ["device-orientation" "Portrait" 0]
     Then Check Element existed ["x-vf-trace-session-id" 0]
     Then Check Element value ["x-vf-net-band" "NA" 0]
-    Then Check Element existed ["x-vf-trace-timestamp" 0]
     Then Check Element existed ["x-vf-trace-transaction-id" 0]
     Then Check Element value ["x-vf-net-type" "WiFi" 0]
     Then Check Element value ["x-vf-app-state" "Foreground" 0]
@@ -35,7 +34,7 @@ Feature: check SMAPI Navigation
     Then Check Element value ["x-vf-trace-tid" "NA" 1]
     Then Check Element value ["x-vf-user-id" "NA" 1]
     Then Check Element value ["event-type" "UIControl" 1]
-    Then Check Element value ["event-description" "Clicked on Position row: 0 0] sec: 0" 1]
+    Then Check Element value ["event-description" "Pressed on Position row: 0, sec: 0" 1]
 
   Scenario: Check 3rd navigation event to UIControl
     Then Check Element value ["x-vf-user-id" "NA" 2]

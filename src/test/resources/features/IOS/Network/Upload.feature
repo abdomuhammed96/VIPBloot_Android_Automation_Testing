@@ -30,7 +30,7 @@ Feature: check SMAPI URLSessiion
     Then Check Element existed ["x-vf-trace-timestamp" 1]
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["x-vf-app-state" "Foreground" 1]
-    Then Check Element value ["event-description" "{\n  \"responseMessage\" : \"Internal server Error\",\n  \"endPoint\" : \"https:\\\/\\\/jsonplaceholder.typicode.com\",\n  \"error\" : \"Internal server Error\",\n  \"responseTimeinMS\" : \"0\",\n  \"responseCode\" : 500,\n  \"requestDate\" : \"Tue, 12-Apr-2022 10:11 PM GMT+2\"\n}" 1]
+    Then Check Element value ["event-description" "200" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
     Then Check Element value ["subpage-name" "NA" 1]
     Then Check Element existed ["x-vf-trace-transaction-id" 1]

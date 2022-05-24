@@ -86,4 +86,46 @@ public class WebMainPO extends WebPageObjectBase {
 
     @FindBy(xpath = "/html/body/div[1]/div/div/a")
     public WebElement getStarted;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div/p/button[4]")
+    public WebElement Click_On_Fire_Event_With_Subpage;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div/p/button[5]")
+    public WebElement Click_On_Fire_Event_With_Subpage_Others;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div/p/button[6]")
+    public WebElement Add_Bug_English;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div/p/button[7]")
+    public WebElement Add_Bug_Arabic;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div/p/button[8]")
+    public WebElement Fire_Event_Clicked;
+
+    @FindBy(xpath = "//*[@id=\"smapi-bug-report-wrapper\"]/div/div/div[3]/div[2]/div[2]")
+    public WebElement Upload_Image;
+
+    @FindBy(xpath = "//*[@id=\"smapi-bug-report-wrapper\"]/div/div/div[3]/div[2]/div[2]")
+    public WebElement Upload_Image_Arabic;
+
+    @FindBy(xpath = "//*[@id=\"smapiBugReportAttachmentsArray\"]/div[1]/div/img")
+    public WebElement Click_On_Image;
+
+    @FindBy(xpath = "//*[@id=\"smapiBugReportAttachmentsArray\"]/div[1]/div/div/i")
+    public WebElement Click_On_Image_Arabic;
+
+    @FindBy(xpath = "//*[@id=\"smapiBugReportModald9f6a573-c0bb-4dce-8728-1a52b2e92c80\"]/div/div/div/i")
+    public WebElement Click_On_Cancel;
+
+    @FindBy(xpath = "//*[@id=\"smapiBugReportModalea59ed69-28df-495d-848d-ee87608a6fd7\"]/div/div/div/i")
+    public WebElement Click_On_Cancel_Arabic;
+
+    @FindBy(xpath = "//*[@id=\"submit-smapi-bug-report-html-file\"]")
+    public WebElement Click_On_Submit_Request;
+
+    @FindBy(xpath = "//*[@id=\"submit-smapi-bug-report-html-file\"]")
+    public WebElement Click_On_Submit_Request_Arabic;
+
+    @FindBy(xpath = "//*[@id=\"close-smapi-bug-report-html-file\"]/i")
+    public WebElement Click_On_Cancel_Report;
 }
