@@ -164,17 +164,13 @@ public class LogCapture {
         int eventIndex = 0;
 
         for (LogEntry entry : entries) {
-//			if (entry.getMessage().contains("current events count")){
-//				System.out.println(entry.getMessage());
-//				String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");;
-//				webEventsCount = Integer.parseInt(EventsCount);
-//			}
             if (entry.getMessage().contains("seclibng.interfaces.CoreManager: {") && entry.getMessage().contains("}")) {
-//				int eventIndex = 0;
                 String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("seclibng.interfaces.CoreManager: {") + 1, entry.getMessage().length() - 1);
-//				String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
-//				for (String event : msglist) {
+                boolean netw = false;
+                if (msg.contains("\"event-type\":\"Network\""))
+                    netw = true;
+
                 jsonList[eventIndex] = new JsonObject();
                 String[] elements = msg.split(",");
                 for (String element : elements) {
@@ -184,7 +180,18 @@ public class LogCapture {
                     try {
                         key = elementList[0];
                         value = elementList[1];
-                        jsonList[eventIndex].addProperty(key, value);
+                        if (key.contains("requestDate") ||
+                                key.contains("endPoint") ||
+                                key.contains("responseCode") ||
+                                key.contains("responseTimeinMS") ||
+                                key.contains("protocol") ||
+                                key.contains("responseContentType") ||
+                                key.contains("responseMessage"))
+                        {
+                            continue;
+                        }else {
+                            jsonList[eventIndex].addProperty(key, value);
+                        }
                     } catch (NullPointerException e) {
                     } catch (ArrayIndexOutOfBoundsException e) {
                     }
