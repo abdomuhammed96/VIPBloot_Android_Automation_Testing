@@ -67,6 +67,10 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
                 waitForVisibility(Custom_Event);
                 Custom_Event.click();
                 break;
+            case "UIEvents":
+                waitForVisibility(UIEvents);
+                UIEvents.click();
+                break;
 
             default:
         }

@@ -13,7 +13,7 @@ public class IOSStepdefs {
     SoftAssert softAssert;
 
     public IOSStepdefs(Config config) {
-//        if (config.isAndroid()) page = new AndroidNativeMainPageLogic();
+//        if (config.isAndroid()) page = new AndroidNativeUIEventsPageLogic();
         if (config.isIos()) page = new IOSMainLogic();
         softAssert = new SoftAssert();
     }
