@@ -1,13 +1,13 @@
 Feature: check SMAPI config events
 
-  BackgroundUser Opens App and Capture Events
+  Background: User Opens App and Capture Events
     When Capture IOS Events
     When Click On IOS Button ["Crash Reporting"]
     When Capture IOS Events
 
   Scenario: Check 1st navigation event  to Crash Reporting
     Then Check Element existed ["x-vf-trace-transaction-id" 0]
-    Then Check Element value ["event-description" "Clicked on Position row6, sec0" 0]
+    Then Check Element value ["event-description" "Swiped on Position row : 6, sec: 6,  direction none" 0]
     Then Check Element value ["x-vf-net-type" "WiFi" 0]
     Then Check Element existed ["x-vf-trace-timestamp" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
@@ -15,7 +15,7 @@ Feature: check SMAPI config events
     Then Check Element value ["x-vf-net-band" "NA" 0]
     Then Check Element value ["x-vf-user-id" "NA" 0]
     Then Check Element value ["x-vf-app-state" "Foreground" 0]
-    Then Check Element value ["page-name" "Session VC" 0]
+    Then Check Element value ["page-name" "Main Page VC" 0]
     Then Check Element value ["x-vf-trace-tid" "NA" 0]
     Then Check Element value ["subpage-name" "NA" 0]
     Then Check Element existed ["x-vf-trace-session-id" 0]
@@ -23,7 +23,7 @@ Feature: check SMAPI config events
 
   Scenario: Check 2nd navigation event  to Crash Reporting
     Then Check Element existed ["x-vf-trace-timestamp" 1]
-    Then Check Element value ["page-name" "UINavigationController" 1]
+    Then Check Element value ["page-name" "Main Page VC" 1]
     Then Check Element existed ["x-vf-trace-transaction-id" 1]
     Then Check Element value ["subpage-name" "NA" 1]
     Then Check Element value ["x-vf-net-band" "NA" 1]
@@ -31,14 +31,14 @@ Feature: check SMAPI config events
     Then Check Element value ["x-vf-trace-tid" "NA" 1]
     Then Check Element value ["x-vf-net-type" "WiFi" 1]
     Then Check Element existed ["x-vf-trace-session-id" 1]
-    Then Check Element value ["event-element" "Stay Time" 1]
-    Then Check Element value ["event-type" "Page" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["event-element" "UITableView" 1]
+    Then Check Element value ["event-type" "UIControl" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
     Then Check Element value ["device-orientation" "Portrait" 1]
     Then Check Element value ["x-vf-app-state" "Foreground" 1]
 
   Scenario: Check 3rd navigation event  to Crash Reporting
-    Then Check Element value ["page-name" "Main Page VC" 2]
+    Then Check Element value ["page-name" "UINavigationController" 2]
     Then Check Element value ["event-type" "Page" 2]
     Then Check Element existed ["x-vf-trace-session-id" 2]
     Then Check Element value ["x-vf-app-state" "Foreground" 2]
@@ -64,10 +64,10 @@ Feature: check SMAPI config events
     Then Check Element value ["device-orientation" "Portrait" 3]
     Then Check Element value ["x-vf-trace-tid" "NA" 3]
     Then Check Element value ["x-vf-app-state" "Foreground" 3]
-    Then Check Element value ["event-element" "Load Time" 3]
+    Then Check Element value ["event-element" "Stay Time" 3]
     Then Check Element existed ["event-description" 3]
     Then Check Element value ["event-type" "Page" 3]
-    Then Check Element value ["page-name" "SampleApp.CrashViewController" 3]
+    Then Check Element value ["page-name" "Main Page VC" 3]
 
   Scenario: Check 1st back navigation event from Crash Reporting
     When Click On IOS Button ["Back"]

@@ -18,4 +18,6 @@ public abstract class WebMainPageAbstract extends WebMainPO {
     public abstract void ScrollToAnElement(WebElement element) throws InterruptedException;
 
     public abstract boolean CheckKeyPresence(String key, int eventIndex);
+
+    public abstract void openCloseNewTab();
 }

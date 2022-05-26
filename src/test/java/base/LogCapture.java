@@ -97,53 +97,15 @@ public class LogCapture {
 
     /**
      * @param driver
-     * @return Captured Logs from android emulator
+     * @return Captured Logs browser console
      * @author Shaher Amin
      */
     public JsonObject[] captureWebEvents(WebDriver driver) {
-        jsonList = new JsonObject[10];
+        jsonList = new JsonObject[20];
         List<LogEntry> entries = driver.manage().logs().get(LogType.BROWSER).getAll();
 //		entries = driver.manage().logs().get(LogType.PERFORMANCE).getAll();
 //		entries = driver.manage().logs().get(LogType.SERVER).getAll();
 
-		/* Event example
-		[{"x-vf-trace-session-id":"2793d40a-e042-49f7-a993-69558f8e30c3"
-				,"x-vf-user-id":"NA"
-				,"x-vf-trace-subject-id":"773bf3e3-4aad-4651-af37-e37a670d9409"
-				,"install-id":"773bf3e3-4aad-4651-af37-e37a670d9409"
-				,"x-vf-trace-timestamp":1640866369354
-				,"x-vf-trace-transaction-id":"e872d44a-eec4-4067-9800-d2a655a137df"
-				,"device-orientation":"Landscape"
-				,"x-vf-trace-width":1920
-				,"x-vf-trace-height":1080
-				,"x-vf-net-band":"NA",
-				"x-vf-net-type":"NA",
-				"x-vf-trace-subject-region":"NA",
-				"event-type":"UICustom",
-				"event-element":"testelemen",
-				"event-description":"testdescription",
-				"page-name":"testonPage"
-				,"subpage-name":"NA",
-				"x-vf-custom-test1":"teszt1customjson"
-				,"x-vf-custom-test2":"teszt2customjson"},
-
-		{"x-vf-trace-session-id":"2793d40a-e042-49f7-a993-69558f8e30c3",
-				"x-vf-user-id":"NA",
-				"x-vf-trace-subject-id":"773bf3e3-4aad-4651-af37-e37a670d9409",
-				"install-id":"773bf3e3-4aad-4651-af37-e37a670d9409",
-				"x-vf-trace-timestamp":1640866369386,
-				"x-vf-trace-transaction-id":"2622962c-cf5b-4391-ab3f-7a81023bd0a6",
-				"device-orientation":"Landscape",
-				"x-vf-trace-width":1920,
-				"x-vf-trace-height":1080,
-				"x-vf-net-band":"NA",
-				"x-vf-net-type":"NA",
-				"x-vf-trace-subject-region":"NA",
-				"event-type":"UICustom",
-				"event-element":"Component",
-				"event-description":"{\"Netperform\":\"7.0\",\"Billing\":\"4.0\",\"TermAndCondition\":\"3.0\"}",
-				"page-name":"BootsApp | Home-http://localhost:3000/","subpage-name":"NA"}]
-		*/
         for (LogEntry entry : entries) {
             if (entry.getMessage().contains("current events count")) {
 //				System.out.println(entry.getMessage());
@@ -153,11 +115,22 @@ public class LogCapture {
             }
             if (entry.getMessage().contains("[{") && entry.getMessage().contains("}]")) {
                 int eventIndex = 0;
-                String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("[{"), entry.getMessage().length() - 1);
+                String msgDefault = entry.getMessage().substring(entry.getMessage().indexOf("[{"), entry.getMessage().length() - 1);
+                String msg = msgDefault.replaceAll("]", ",{");
                 String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
+                Boolean pageView =false;
                 for (String event : msglist) {
-                    jsonList[eventIndex] = new JsonObject();
+                    if (event.contains("url") && !event.contains("event-description"))
+                        continue;
+                    if (pageView){
+                        eventIndex--; pageView = false;
+                    }else {
+                        jsonList[eventIndex] = new JsonObject();
+                    }
+                    if (event.contains("url") && event.contains("event-description")) {
+                        pageView = true;
+                    }
                     String[] elements = event.split(",");
                     for (String element : elements) {
                         String key = null;
@@ -191,17 +164,13 @@ public class LogCapture {
         int eventIndex = 0;
 
         for (LogEntry entry : entries) {
-//			if (entry.getMessage().contains("current events count")){
-//				System.out.println(entry.getMessage());
-//				String EventsCount = entry.getMessage().substring(entry.getMessage().lastIndexOf(": ")).replaceAll("[^0-9]", "");;
-//				webEventsCount = Integer.parseInt(EventsCount);
-//			}
             if (entry.getMessage().contains("seclibng.interfaces.CoreManager: {") && entry.getMessage().contains("}")) {
-//				int eventIndex = 0;
                 String msg = entry.getMessage().substring(entry.getMessage().lastIndexOf("seclibng.interfaces.CoreManager: {") + 1, entry.getMessage().length() - 1);
-//				String[] msglist = StringUtils.substringsBetween(msg, "{", "}");
 
-//				for (String event : msglist) {
+                boolean netw = false;
+                if (msg.contains("\"event-type\":\"Network\""))
+                    netw = true;
+
                 jsonList[eventIndex] = new JsonObject();
                 String[] elements = msg.split(",");
                 for (String element : elements) {
@@ -211,7 +180,18 @@ public class LogCapture {
                     try {
                         key = elementList[0];
                         value = elementList[1];
-                        jsonList[eventIndex].addProperty(key, value);
+                        if (key.contains("requestDate") ||
+                                key.contains("endPoint") ||
+                                key.contains("responseCode") ||
+                                key.contains("responseTimeinMS") ||
+                                key.contains("protocol") ||
+                                key.contains("responseContentType") ||
+                                key.contains("responseMessage"))
+                        {
+                            continue;
+                        }else {
+                            jsonList[eventIndex].addProperty(key, value);
+                        }
                     } catch (NullPointerException e) {
                     } catch (ArrayIndexOutOfBoundsException e) {
                     }
@@ -362,7 +342,11 @@ public class LogCapture {
                     String[] slist = StringUtils.substringsBetween(logMsg, "\"", "\"");
                     try {
                         key = slist[0];
-                        value = slist[1];
+                        if(key.equals("event-description") && logMsg.contains("responseCode")){
+                            value = logMsg.substring(logMsg.lastIndexOf("responseCode") + "responseCode".length() + 8, logMsg.lastIndexOf("responseCode") + "responseCode".length() + 11);
+                        }else {
+                            value = slist[1];
+                        }
                     }
                     catch (ArrayIndexOutOfBoundsException e) {}
                     catch (NullPointerException e) {}

@@ -50,6 +50,17 @@ public class IOSMainLogic extends IOSMainAbstract {
 
     @Override
     public boolean checkNoCapturedEvents() {
+        captureAllEvents();
         return validateNoCapturedEvents();
     }
+
+//    @Override
+//    public void pressButton(String arg0) {
+//        MobileElement e = (MobileElement) driver.findElement(MobileBy.className(arg0));
+//        TouchAction a2 = new TouchAction(driver);
+//        System.out.println(((e.getLocation().getX() + e.getSize().getHeight())) +" "+ (e.getLocation().getY() + e.getSize().getWidth()));
+//        int x= (e.getLocation().getX() + e.getSize().getHeight()) / 2;
+//        int y= (e.getLocation().getY() + e.getSize().getWidth()) / 2;
+//        a2.tap(PointOption.point(x, y)).perform();
+//    }
 }
