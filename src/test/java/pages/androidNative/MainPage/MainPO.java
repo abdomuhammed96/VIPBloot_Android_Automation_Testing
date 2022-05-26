@@ -64,6 +64,11 @@ public class MainPO extends AndroidNativePageObjectBase {
     })
     public MobileElement Custom_Event;
 
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/button_ui_events"),
+    })
+    public MobileElement UIEvents;
 
 
 }
