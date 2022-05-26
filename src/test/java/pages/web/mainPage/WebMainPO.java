@@ -114,7 +114,7 @@ public class WebMainPO extends WebPageObjectBase {
     @FindBy(xpath = "//*[@id=\"smapiBugReportAttachmentsArray\"]/div[1]/div/div/i")
     public WebElement Click_On_Image_Arabic;
 
-    @FindBy(xpath = "//*[@id=\"smapiBugReportModald9f6a573-c0bb-4dce-8728-1a52b2e92c80\"]/div/div/div/i")
+    @FindBy(xpath = "/html/body/div[1]/div/div/div[3]/div[3]/div/div[2]/div/div/div/i")
     public WebElement Click_On_Cancel;
 
     @FindBy(xpath = "//*[@id=\"smapiBugReportModalea59ed69-28df-495d-848d-ee87608a6fd7\"]/div/div/div/i")
