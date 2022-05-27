@@ -41,6 +41,11 @@ public class WebMainPageLogic extends WebMainPageAbstract {
     }
 
     @Override
+    public void openCloseNewTab() {
+        openAndCloseNewTab();
+    }
+
+    @Override
     public void ScrollToAnElement(WebElement element) throws InterruptedException {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,500)", element);
     }

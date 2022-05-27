@@ -24,7 +24,7 @@ Feature: check SMAPI URLSessiion
     Then Check Element value ["x-vf-trace-tid" "NA" 0]
 
   Scenario: Check 2nd Post event in URL Session
-    Then Check Element value ["event-description" "Pressed on Position row: 0, sec: 0" 1]
+    Then Check Element value ["event-description" "201" 1]
     Then Check Element value ["event-type" "UIControl" 1]
     Then Check Element value ["x-vf-app-state" "Foreground" 1]
     Then Check Element value ["subpage-name" "NA" 1]

@@ -27,7 +27,7 @@ Feature: check SMAPI URLSessiion
     Then Check Element existed ["x-vf-trace-session-id" 1]
     Then Check Element value ["x-vf-net-band" "NA" 1]
     Then Check Element value ["subpage-name" "NA" 1]
-    Then Check Element value ["event-description" "{\n  \"responseContentType\" : \"application\\\/json; charset=utf-8\",\n  \"responseCode\" : 201,\n  \"responseMessage\" : \"Created\",\n  \"requestDate\" : \"Tue, 12-Apr-2022 10:12 PM GMT+2\",\n  \"responseTimeinMS\" : \"343\",\n  \"endPoint\" : \"https:\\\/\\\/jsonplaceholder.typicode.com\\\/posts\"\n}" 1]
+    Then Check Element value ["event-description" "201" 1]
     Then Check Element value ["x-vf-user-id" "NA" 1]
     Then Check Element value ["x-vf-net-type" "WiFi" 1]
     Then Check Element value ["page-name" "Session VC" 1]
@@ -41,7 +41,7 @@ Feature: check SMAPI URLSessiion
 
   Scenario: Check 3rd Custom event in URL Session
     Then Check Element value ["event-type" "Network" 2]
-    Then Check Element value ["event-description" "{\n  \"endPoint\" : \"https:\\\/\\\/jsonplaceholder.typicode.com\\\/posts\",\n  \"responseMessage\" : \"Created\",\n  \"requestDate\" : \"Tue, 12-Apr-2022 10:12 PM GMT+2\",\n  \"responseCode\" : 201,\n  \"responseTimeinMS\" : \"345\"\n}" 2]
+    Then Check Element value ["event-description" "201" 2]
     Then Check Element existed ["x-vf-trace-session-id" 2]
     Then Check Element value ["x-vf-user-id" "NA" 2]
     Then Check Element existed ["x-vf-trace-timestamp" 2]

@@ -63,7 +63,7 @@ public class Hooks {
             driver.closeApp();
 
         if (config.isWeb())
-            webDriver.close();
+            webDriver.quit();
 
         closeDriver();
         try { Thread.sleep(3000); } catch (Exception ign) {}

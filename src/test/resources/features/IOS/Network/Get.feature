@@ -35,6 +35,6 @@ Feature: check SMAPI URLSessiion
     Then Check Element value ["x-vf-net-band" "NA" 1]
     Then Check Element value ["x-vf-app-state" "Foreground" 1]
     Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["event-description" "{\n  \"responseCode\" : 200,\n  \"requestDate\" : \"Tue, 12-Apr-2022 10:09 PM GMT+2\",\n  \"responseMessage\" : \"OK\",\n  \"responseContentType\" : \"application\\\/json; charset=utf-8\",\n  \"endPoint\" : \"https:\\\/\\\/jsonplaceholder.typicode.com\\\/users?MSISDN=010145454\",\n  \"responseTimeinMS\" : \"133\"\n}" 1]
+    Then Check Element value ["event-description" "200" 1]
     Then Check Element value ["event-type" "Network" 1]
     Then Check Element value ["subpage-name" "NA" 1]
