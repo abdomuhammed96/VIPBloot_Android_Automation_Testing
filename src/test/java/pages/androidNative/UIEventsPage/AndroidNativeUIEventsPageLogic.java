@@ -1,11 +1,15 @@
 package pages.androidNative.UIEventsPage;
 
 import com.google.gson.JsonObject;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 
 import java.time.Duration;
 
@@ -29,6 +33,27 @@ public class AndroidNativeUIEventsPageLogic extends AndroidNativeUIEventsPageAbs
         optionTwo.click();
     }
 
+ @Override
+ public void ScrollToMyElement(String Name){
+
+         driver.findElement(MobileBy.AndroidUIAutomator(
+                 "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+                         + Name +
+                         "\").instance(0))"));
+         try { Thread.sleep(1000); } catch (Exception ign) {}
+     }
+
+
+
+    @Override
+    public void DragAndDrop() {
+
+         action = new TouchAction(driver);
+        action.longPress(new LongPressOptions().withElement(new
+                ElementOption().withElement(SourceDragAndDrop))).perform();
+        action.moveTo(new ElementOption().withElement(DestDragAndDrop)).perform().release();
+
+    }
     @Override
     public void Slide() {
         //Get start point of seekbar.
@@ -131,6 +156,61 @@ public class AndroidNativeUIEventsPageLogic extends AndroidNativeUIEventsPageAbs
                 waitForVisibility(SelectingNumber);
                 SelectingNumber.click();
                 break;
+            case "PopUpMenu":
+                ScrollToMyElement("SETTINGS");
+                waitForVisibility(PopUpMenu);
+                PopUpMenu.click();
+                break;
+            case "SettingsForPopUpMenu":
+                waitForVisibility(SettingsForPopUpMenu);
+                SettingsForPopUpMenu.click();
+                break;
+            case "RelativeLayoutsForContainers":
+                waitForVisibility( RelativeLayoutsForContainers);
+                RelativeLayoutsForContainers.click();
+                break;
+
+            case "FrameLayoutsForContainers":
+                waitForVisibility( FrameLayoutsForContainers);
+                FrameLayoutsForContainers.click();
+                break;
+
+
+            case "DragAndDrop":
+                ScrollToMyElement("SETTINGS");
+                waitForVisibility(DragAndDrop);
+                DragAndDrop.click();
+                break;
+
+            case "BasicUIElements":
+                ScrollToMyElement("SETTINGS");
+                waitForVisibility(BasicUIElements);
+                BasicUIElements.click();
+                break;
+
+            case "ExpandableListView":
+                ScrollToMyElement("SETTINGS");
+                waitForVisibility( ExpandableListView);
+                ExpandableListView.click();
+                break;
+
+            case "SelectingItemForExpandableView":
+                waitForVisibility( SelectingItemForExpandableView);
+                SelectingItemForExpandableView.click();
+                break;
+
+            case "SelectingSubItemForExpandableView":
+                waitForVisibility( SelectingSubItemForExpandableView);
+                SelectingSubItemForExpandableView.click();
+                break;
+
+            case "TextViewForBasicUIElements":
+                waitForVisibility( TextViewForBasicUIElements);
+                TextViewForBasicUIElements.click();
+                break;
+
+
+
             default:
         }
     }

@@ -46,6 +46,11 @@ public class UIEventsStepdefs {
     }
 
 
+    @When("Drag and Drop")
+    public void dragAndDrop() {
+
+        UIEventspage.DragAndDrop();
+    }
 }
 
 

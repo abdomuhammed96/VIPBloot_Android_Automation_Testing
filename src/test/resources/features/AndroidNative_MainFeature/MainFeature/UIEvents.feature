@@ -222,7 +222,7 @@ Feature: UI Events Feature
     Then Check Element value ["x-vf-net-band" "NA" 0]
     Then Check Element value ["event-description" "NA" 0]
 
-    #########################################################################
+    ######################################### Touch Screen ################################
 
   Scenario: Check UIControl Event after Clicking on TouchScreen on UIEvents Page
     When Click On Button On UIEvents Page["TouchListener"]
@@ -434,3 +434,358 @@ Feature: UI Events Feature
     Then Check Element value ["x-vf-trace-tid" "NA" 0]
     Then Check Element value ["x-vf-user-id" "NA" 0]
     Then Check Element value ["x-vf-net-band" "NA" 0]
+
+###################################### PopUp Menu ########################################
+  Scenario: Check UIControl Event after Settings on PopUp Menu
+    When Click On Button On UIEvents Page["PopUpMenu"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["SettingsForPopUpMenu"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "MenuItemImpl:Settings" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "Pressed on Menu Settings" 0]
+
+    ######################################################### Container #############################################
+  Scenario: Check UIControl Event after Clicking on Container on UIEvents Page
+    When Click On Button On UIEvents Page["Containers"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "MaterialButton:btn_containers" 0]
+    Then Check Element value ["event-description" "Pressed on Containers" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+  Scenario: Check Page Event - Stay Time for UIEvents Fragment - after clicking on "Container"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["Containers"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 1]
+    Then Check Element value ["device-orientation" "Portrait" 1]
+    Then Check Element value ["event-element" "Stay Time" 1]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
+    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Check Element value ["page-name" "MainActivity" 1]
+    Then Check Element value is not null ["event-description" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 1]
+    Then Check Element value ["x-vf-trace-tid" "NA" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
+    Then Check Element value ["x-vf-net-band" "NA" 1]
+
+  Scenario: Check Page Event - Load Time for Container Fragment - after clicking on "Container"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["Containers"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 2]
+    Then Check Element value ["device-orientation" "Portrait" 2]
+    Then Check Element value ["event-element" "Load Time" 2]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 2]
+    Then Check Element value is not null ["x-vf-trace-session-id" 2]
+    Then Check Element value is not null ["event-description" 2]
+    Then Check Element value ["page-name" "MainActivity" 2]
+    Then Check Element value ["x-vf-trace-tid" "NA" 2]
+    Then Check Element value ["x-vf-user-id" "NA" 2]
+    Then Check Element value ["x-vf-net-band" "NA" 2]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ContainersFragment" 2]
+
+  Scenario: Check UIControl Event after Clicking on Relative View on Container Page
+    When Click On Button On UIEvents Page["Containers"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["RelativeLayoutsForContainers"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "RelativeLayout:layoutTestRelative" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ContainersFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "NA" 0]
+
+  Scenario: Check UIControl Event after Clicking on FrameLayout View on Container Page
+    When Click On Button On UIEvents Page["Containers"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["FrameLayoutsForContainers"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "FrameLayout:layoutTestFrame" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ContainersFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "NA" 0]
+
+     ######################################################### ExpandableView #############################################
+  Scenario: Check UIControl Event after Clicking on ExpandableView on UIEvents Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "MaterialButton:btn_expandable_list_view" 0]
+    Then Check Element value ["event-description" "Pressed on Expandable ListView" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+  Scenario: Check Page Event - Stay Time for UIEvents Fragment - after clicking on "ExpandableView"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 1]
+    Then Check Element value ["device-orientation" "Portrait" 1]
+    Then Check Element value ["event-element" "Stay Time" 1]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
+    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Check Element value ["page-name" "MainActivity" 1]
+    Then Check Element value is not null ["event-description" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 1]
+    Then Check Element value ["x-vf-trace-tid" "NA" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
+    Then Check Element value ["x-vf-net-band" "NA" 1]
+
+  Scenario: Check Page Event - Load Time for ExpandableView Fragment - after clicking on "ExpandableView"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 2]
+    Then Check Element value ["device-orientation" "Portrait" 2]
+    Then Check Element value ["event-element" "Load Time" 2]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 2]
+    Then Check Element value is not null ["x-vf-trace-session-id" 2]
+    Then Check Element value is not null ["event-description" 2]
+    Then Check Element value ["page-name" "MainActivity" 2]
+    Then Check Element value ["x-vf-trace-tid" "NA" 2]
+    Then Check Element value ["x-vf-user-id" "NA" 2]
+    Then Check Element value ["x-vf-net-band" "NA" 2]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ExpandableListViewFragment" 2]
+
+  Scenario: Check UIControl Event - Event description for pressing - after Clicking on Relative View on ExpandableView Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["SelectingItemForExpandableView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "ExpandableListView:explistView" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ExpandableListViewFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "Pressed on Group 1" 0]
+
+
+  Scenario: Check UIControl Event - Event description for expanding - after Clicking on Item on ExpandableView Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["SelectingItemForExpandableView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 1]
+    Then Check Element value ["device-orientation" "Portrait" 1]
+    Then Check Element value ["event-element" "ExpandableListView" 1]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
+    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Check Element value ["page-name" "MainActivity" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ExpandableListViewFragment" 1]
+    Then Check Element value ["x-vf-trace-tid" "NA" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
+    Then Check Element value ["x-vf-net-band" "NA" 1]
+    Then Check Element value ["event-description" "Expanded Group 1" 1]
+
+
+
+  Scenario: Check UIControl Event after Clicking on Relative View on ExpandableView Page
+    When Click On Button On UIEvents Page["ExpandableListView"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["SelectingItemForExpandableView"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["SelectingSubItemForExpandableView"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "ExpandableListView:explistView" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.ExpandableListViewFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "NA" 0]
+
+    ######################################################### BasicUIElements #############################################
+  Scenario: Check UIControl Event after Clicking on BasicUIElements on UIEvents Page
+    When Click On Button On UIEvents Page["BasicUIElements"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "MaterialButton:btn_basic_ui_elements" 0]
+    Then Check Element value ["event-description" "Pressed on Basic UI Elements" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+  Scenario: Check Page Event - Stay Time for UIEvents Fragment - after clicking on "BasicUIElements"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["BasicUIElements"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 1]
+    Then Check Element value ["device-orientation" "Portrait" 1]
+    Then Check Element value ["event-element" "Stay Time" 1]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
+    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Check Element value ["page-name" "MainActivity" 1]
+    Then Check Element value is not null ["event-description" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 1]
+    Then Check Element value ["x-vf-trace-tid" "NA" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
+    Then Check Element value ["x-vf-net-band" "NA" 1]
+
+  Scenario: Check Page Event - Load Time for BasicUIElements Fragment - after clicking on "BasicUIElements"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["BasicUIElements"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 2]
+    Then Check Element value ["device-orientation" "Portrait" 2]
+    Then Check Element value ["event-element" "Load Time" 2]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 2]
+    Then Check Element value is not null ["x-vf-trace-session-id" 2]
+    Then Check Element value is not null ["event-description" 2]
+    Then Check Element value ["page-name" "MainActivity" 2]
+    Then Check Element value ["x-vf-trace-tid" "NA" 2]
+    Then Check Element value ["x-vf-user-id" "NA" 2]
+    Then Check Element value ["x-vf-net-band" "NA" 2]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.BasicUiEventsFragment" 2]
+
+  Scenario: Check UIControl Event after Clicking on TextViewForBasicUIElements on BasicUIElements Page
+    When Click On Button On UIEvents Page["BasicUIElements"]
+    When Capture Android Native Events
+    When Click On Button On UIEvents Page["TextViewForBasicUIElements"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "AppCompatImageButton:ib_basic_test" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.BasicUiEventsFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "Pressed on AppCompatImageButton" 0]
+
+    ############################################### Drag and Drop #########################################
+
+  Scenario: Check UIControl Event after Clicking on Drag and Drop on UIEvents Page
+    When Click On Button On UIEvents Page["DragAndDrop"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" "MaterialButton:btn_drag_and_drop" 0]
+    Then Check Element value ["event-description" "Pressed on Drag And Drop" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+  Scenario: Check Page Event - Stay Time for UIEvents Fragment - after clicking on "DragAndDrop"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["DragAndDrop"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 1]
+    Then Check Element value ["device-orientation" "Portrait" 1]
+    Then Check Element value ["event-element" "Stay Time" 1]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
+    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Check Element value ["page-name" "MainActivity" 1]
+    Then Check Element value is not null ["event-description" 1]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.UIEvents" 1]
+    Then Check Element value ["x-vf-trace-tid" "NA" 1]
+    Then Check Element value ["x-vf-user-id" "NA" 1]
+    Then Check Element value ["x-vf-net-band" "NA" 1]
+
+  Scenario: Check Page Event - Load Time for DragAndDrop Fragment - after clicking on "DragAndDrop"
+  button on UIEvents Page
+    When Click On Button On UIEvents Page["DragAndDrop"]
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "Page" 2]
+    Then Check Element value ["device-orientation" "Portrait" 2]
+    Then Check Element value ["event-element" "Load Time" 2]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 2]
+    Then Check Element value is not null ["x-vf-trace-session-id" 2]
+    Then Check Element value is not null ["event-description" 2]
+    Then Check Element value ["page-name" "MainActivity" 2]
+    Then Check Element value ["x-vf-trace-tid" "NA" 2]
+    Then Check Element value ["x-vf-user-id" "NA" 2]
+    Then Check Element value ["x-vf-net-band" "NA" 2]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.DragAndDropFragment" 2]
+
+  Scenario: Check UIControl Event after Drag and Drop
+    When Click On Button On UIEvents Page["DragAndDrop"]
+    When Capture Android Native Events
+    When Drag and Drop
+    When Capture Android Native Events
+    Then Check Element value ["event-type" "UIControl" 0]
+    Then Check Element value ["device-orientation" "Portrait" 0]
+    Then Check Element value ["event-element" " MaterialButton:btnYes" 0]
+    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
+    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
+    Then Check Element value is not null ["x-vf-trace-session-id" 0]
+    Then Check Element value ["page-name" "MainActivity" 0]
+    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.uievents.DragAndDropFragment" 0]
+    Then Check Element value ["x-vf-trace-tid" "NA" 0]
+    Then Check Element value ["x-vf-user-id" "NA" 0]
+    Then Check Element value ["x-vf-net-band" "NA" 0]
+    Then Check Element value ["event-description" "Dropped on AppCompatImageView:imgDestination" 0]
