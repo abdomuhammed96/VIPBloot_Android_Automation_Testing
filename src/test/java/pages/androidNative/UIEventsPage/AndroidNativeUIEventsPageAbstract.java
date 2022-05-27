@@ -12,8 +12,11 @@ public abstract class AndroidNativeUIEventsPageAbstract extends UIEventsPO {
 
     public abstract void Slide();
 
+    public abstract void ScrollToMyElement(String Name);
+
     public abstract void SetStarsOnRatingApp();
 
+    public abstract void DragAndDrop();
 
     public abstract void clickOnUIEventsPage(String arg0);
 

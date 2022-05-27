@@ -80,6 +80,34 @@ public class UIEventsPO extends AndroidNativePageObjectBase {
     })
     public MobileElement Containers;
 
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/layoutTestRelative"),
+
+    })
+    public MobileElement RelativeLayoutsForContainers;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/layoutTestFrame"),
+
+    })
+    public MobileElement FrameLayoutsForContainers;
+
+
+
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_popup_menu"),
+
+    })
+    public MobileElement PopUpMenu;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/title"),
+
+    })
+    public MobileElement SettingsForPopUpMenu;
+
+
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//android.view.View[@content-desc=\"25 May 2022\"]"),
@@ -112,6 +140,69 @@ public class UIEventsPO extends AndroidNativePageObjectBase {
 
     })
     public MobileElement CancelButtonForAlert;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_expandable_list_view"),
+
+    })
+    public MobileElement ExpandableListView;
+
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ExpandableListView/android.widget.LinearLayout[1]/android.widget.TextView"),
+
+    })
+    public MobileElement SelectingItemForExpandableView;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ExpandableListView/android.widget.LinearLayout[5]/android.widget.TextView"),
+
+    })
+    public MobileElement SelectingSubItemForExpandableView;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_basic_ui_elements"),
+
+    })
+    public MobileElement BasicUIElements;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = " com.vodafone.smapi.test:id/ib_basic_test"),
+
+    })
+    public MobileElement TextViewForBasicUIElements;
+
+
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btn_drag_and_drop"),
+
+    })
+    public MobileElement DragAndDrop;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/btnYes"),
+
+    })
+    public MobileElement SourceDragAndDrop;
+
+    @FindAll({
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/imgDestination"),
+
+    })
+    public MobileElement DestDragAndDrop;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
