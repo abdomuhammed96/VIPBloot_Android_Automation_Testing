@@ -8,49 +8,53 @@ Feature: check Image Exclusion Feature
     When Capture Android Native Events
 
   Scenario: Check UIControl Event after clicking on "ImageExclusionBtn" button on Main Page
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_image_execlusion" 0]
-    Then Check Element value ["event-description" "Pressed on Image Exclusion" 0]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 0]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 0]
-    Then Check Element value is not null ["x-vf-trace-session-id" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.SecondFragment" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+    Then Validate Android Element ["page-name" "CreateEventActivity"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["event-description" "Custom Event Description"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.SecondFragment"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-user-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_image_execlusion"]
+
+
 
 
   Scenario: Check Page Event - Stay Time for Second Fragment on Main activity- after clicking on "ImageExclusionBtn"
   button on Main Page
-    Then Check Element value ["event-type" "Page" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "Stay Time" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value is not null ["event-description" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.SecondFragment" 1]
-    Then Check Element value ["x-vf-trace-tid" "NA" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.SecondFragment"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Stay Time"]
+
+
 
   Scenario: Check Page Event - Load Time for ImageExclusionBtn Fragment on Main activity
   - after clicking on "ImageExclusionBtn" button on Main Page
-    Then Check Element value ["event-type" "Page" 2]
-    Then Check Element value ["device-orientation" "Portrait" 2]
-    Then Check Element value ["event-element" "Load Time" 2]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 2]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 2]
-    Then Check Element value is not null ["x-vf-trace-session-id" 2]
-    Then Check Element value is not null ["event-description" 2]
-    Then Check Element value ["page-name" "MainActivity" 2]
-    Then Check Element value ["x-vf-trace-tid" "NA" 2]
-    Then Check Element value ["x-vf-user-id" "NA" 2]
-    Then Check Element value ["x-vf-net-band" "NA" 2]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 2]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Load Time"]
+
+
 
 ############################################ OKHTTP3_Download_Image #################################################
 
@@ -59,15 +63,18 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["OKHTTP3_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_okhttp3_download_image" 0]
-    Then Check Element value ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp3_download_image"]
+
+
 
   Scenario: Check Network Event when clicking on OKHTTP3_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
@@ -76,17 +83,18 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["OKHTTP3_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "Network" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "GET" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value is not null ["x-vf-trace-tid" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE"] for event ["Network" "GET"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Network" "GET"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+
 
   Scenario: Check excluding Network event, which its endpoint has "png", when clicking on OKHTTP3_Download_Image buttonn
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
@@ -124,32 +132,39 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["OKHTTP2_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_okhttp2_download_image" 0]
-    Then Check Element value ["event-description" "Pressed on OKHTTP2 DOWNLOAD IMAGE" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP2 DOWNLOAD IMAGE"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_okhttp2_download_image"]
+
+
 
   Scenario: Check Network Event when clicking on OKHTTP2_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
     Then Click On a Button On Image Exclusion Page ["OKHTTP2_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "Network" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "GET" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value is not null ["x-vf-trace-tid" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Network" "GET"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+
+
 
   Scenario: Check excluding Network event, which its endpoint has "png", when clicking on OKHTTP2_Download_Image buttonn
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
@@ -190,32 +205,39 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["Retrofit_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_retrofitOkhttp2_download_image" 0]
-    Then Check Element value ["event-description" "Pressed on Retrofit Download Image" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["event-description" "Pressed on Retrofit Download Image"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_retrofitOkhttp2_download_image"]
+
+
 
   Scenario: Check Network Event when clicking on Retrofit_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on/"]
     Then Click On a Button On Image Exclusion Page ["Retrofit_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "Network" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "GET" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value is not null ["x-vf-trace-tid" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE"] for event ["Network" "GET"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Network" "GET"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+
+
 
   Scenario: Check excluding Network event, which its endpoint has "png", when clicking on Retrofit_Download_Image buttonn
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png/"]
@@ -254,32 +276,39 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["URL_Connection_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_urlconnection_download_image" 0]
-    Then Check Element value ["event-description" "Pressed on URL Connection Download Image" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["event-description" "Pressed on URL Connection Download Image"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_urlconnection_download_image"]
+
+
 
   Scenario: Check Network Event when clicking on URL_Connection_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png/"]
     Then Click On a Button On Image Exclusion Page ["URL_Connection_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "Network" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "GET" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value is not null ["x-vf-trace-tid" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE"] for event ["Network" "GET"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Network" "GET"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+
+
 
   Scenario: Check excluding Network event, which its endpoint has "png", when clicking on URL_Connection_Download_Image buttonn
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
@@ -317,32 +346,40 @@ Feature: check Image Exclusion Feature
     Then Click On a Button On Image Exclusion Page ["Volley_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "MaterialButton:btn_volly_download_image" 0]
-    Then Check Element value ["event-description" "Pressed on Volly Download Image" 0]
-    Then Check Element value ["page-name" "MainActivity" 0]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 0]
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["event-description" "Pressed on Volly Download Image"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:btn_volly_download_image"]
+
+
+
 
   Scenario: Check Network Event when clicking on Volley_Download_Image button
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png/"]
     Then Click On a Button On Image Exclusion Page ["Volley_Download_Image"]
     Then Pause Time "3000" ms
     When Capture Android Native Events
-    Then Check Element value ["event-type" "Network" 1]
-    Then Check Element value ["device-orientation" "Portrait" 1]
-    Then Check Element value ["event-element" "GET" 1]
-    Then Check Element value ["page-name" "MainActivity" 1]
-    Then Check Element value ["subpage-name" "com.vodafone.smapi.test.ImageExclusion" 1]
-    Then Check Element value ["x-vf-user-id" "NA" 1]
-    Then Check Element value ["x-vf-net-band" "NA" 1]
-    Then Check Element value is not null ["x-vf-trace-tid" 1]
-    Then Check Element value is not null ["x-vf-trace-transaction-id" 1]
-    Then Check Element value is not null ["x-vf-trace-timestamp" 1]
-    Then Check Element value is not null ["x-vf-trace-session-id" 1]
+
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["event-description" "Pressed on OKHTTP3 DOWNLOAD IMAGE"] for event ["Network" "GET"]
+    Then Validate Android Element ["page-name" "MainActivity"] for event ["Network" "GET"]
+    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.ImageExclusion"] for event ["Network" "GET"]
+    Then Validate Android Element ["device-orientation" "Portrait"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+
+
 
   Scenario: Check excluding Network event, which its endpoint has "png", when clicking on Volley_Download_Image buttonn
     When Set an image exclusion url value ["https://www.google.com/?safe=active&ssui=on//mm.png"]
