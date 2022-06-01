@@ -14,9 +14,5 @@ public abstract class AndroidNativeMainPageAbstract extends MainPO {
 
     public abstract void clickOnButton(String arg0);
 
-
-
-
-
-
+    public abstract boolean validateEventElement(String key, String value, String eventType, String eventElement);
 }

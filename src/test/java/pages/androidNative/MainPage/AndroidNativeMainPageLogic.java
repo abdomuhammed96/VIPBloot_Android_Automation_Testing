@@ -75,4 +75,9 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
             default:
         }
     }
+
+    @Override
+    public boolean validateEventElement(String key, String value, String eventType, String eventElement) {
+        return checkEventElement(key, value, eventType, eventElement);
+    }
 }

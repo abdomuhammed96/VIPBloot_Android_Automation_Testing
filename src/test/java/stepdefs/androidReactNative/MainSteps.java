@@ -98,4 +98,12 @@ public class MainSteps {
                 "Wrong Event_type for flush Event Expected Value: " + value);
         softAssert.assertAll();
     }
+
+    @Then("Validate Android RN Element [{string} {string}] for event [{string} {string}]")
+    public void validateElementForEvent(String key, String value, String eventType, String eventElement) {
+        softAssert.assertTrue(page.validateEventElement(key, value, eventType, eventElement),
+                "Wrong Event_type for Event #" + eventType + "  " + eventType +
+                        " Expected Value: " + value + "for key: "  + key);
+        softAssert.assertAll();
+    }
 }

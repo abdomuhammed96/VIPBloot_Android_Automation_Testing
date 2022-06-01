@@ -144,4 +144,9 @@ public class MainAndroidRNPageLogicAndroid extends MainAndroidRNPageAbstract {
     public void PushAppIntoBackground() {
         ((AppiumDriver) driver).runAppInBackground(Duration.ofSeconds(10));
     }
+
+    @Override
+    public boolean validateEventElement(String key, String value, String eventType, String eventElement) {
+        return checkEventElement(key, value, eventType, eventElement);
+    }
 }

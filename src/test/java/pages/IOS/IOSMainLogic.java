@@ -54,6 +54,11 @@ public class IOSMainLogic extends IOSMainAbstract {
         return validateNoCapturedEvents();
     }
 
+    @Override
+    public boolean validateEventElement(String key, String value, String eventType, String eventElement) {
+        return checkEventElement(key, value, eventType, eventElement);
+    }
+
 //    @Override
 //    public void pressButton(String arg0) {
 //        MobileElement e = (MobileElement) driver.findElement(MobileBy.className(arg0));

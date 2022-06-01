@@ -22,5 +22,8 @@ public abstract class IOSMainAbstract extends MainPO {
 
     public abstract boolean checkNoCapturedEvents();
 
+    public abstract boolean validateEventElement(String key, String value, String eventType, String eventElement);
+
+
 //    public abstract void pressButton(String arg0);
 }

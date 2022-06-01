@@ -72,7 +72,7 @@ public class LogCapture {
      * @return the saved captured logs from android emulator
      * @author Shaher Amin
      */
-    public JsonObject[] getLogs() {
+    public static JsonObject[] getLogs() {
         return jsonList;
     }
 

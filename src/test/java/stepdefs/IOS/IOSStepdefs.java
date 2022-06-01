@@ -60,6 +60,14 @@ public class IOSStepdefs {
         softAssert.assertAll();
     }
 
+    @Then("Validate IOS Element [{string} {string}] for event [{string} {string}]")
+    public void validateElementForEvent(String key, String value, String eventType, String eventElement) {
+        softAssert.assertTrue(page.validateEventElement(key, value, eventType, eventElement),
+                "Wrong Event_type for Event #" + eventType + "  " + eventType +
+                        " Expected Value: " + value + "for key: "  + key);
+        softAssert.assertAll();
+    }
+
 //    @When("Click on IOS button by class [{string}]")
 //    public void clickOnIOSButtonByClass(String arg0) {
 //        page.pressButton(arg0);

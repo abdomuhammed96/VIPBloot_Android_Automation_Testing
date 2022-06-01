@@ -4,9 +4,10 @@ Feature: check AppLaunch event
     When Capture Android Native Events
 
   Scenario: Check App Launch Events
+#    check event ["Application" "App launch time" "device-orientation" "Portrait"]
     Then Check Element value ["event-type" "Application" 0]
     Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "App launch time" 0]
+    Then Check Element value ["c" "App launch time" 0]
     Then Check Element value ["page-name" "MainActivity" 0]
     Then Check Element value ["subpage-name" "NA" 0]
     Then Check Element value ["x-vf-trace-tid" "NA" 0]

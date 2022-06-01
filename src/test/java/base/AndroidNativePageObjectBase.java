@@ -91,4 +91,8 @@ public abstract class AndroidNativePageObjectBase {
     public boolean checkValueIsNotNull(String key, int eventIndex) {
         return LogCompare.checkValueIsNotNull(key, logCapture.getLogs()[eventIndex]);
     }
+
+    public boolean checkEventElement(String key, String value, String eventType, String eventElement) {
+        return LogCompare.compareEvent(logCapture.getLogs(), eventType, eventElement, key, value);
+    }
 }

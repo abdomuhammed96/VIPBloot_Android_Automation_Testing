@@ -43,4 +43,6 @@ public abstract class MainAndroidRNPageAbstract extends MainPO {
     public abstract void RefreshPage();
 
     public abstract void PushAppIntoBackground();
+
+    public abstract boolean validateEventElement(String key, String value, String eventType, String eventElement);
 }

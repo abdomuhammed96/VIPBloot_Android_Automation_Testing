@@ -26,12 +26,15 @@ Feature: Check About Page
 
   Scenario: Check Page Loaded Event while SignUp Page Loading
     Then Click on ["SignUp"]
-    Then Pause Time "3000" ms
+    Then Pause Time "4000" ms
     Then Capture WEB Events
-    Then Validate WEB Element ["event-type" "Page" 2]
-    Then Check Presence of WEB Element ["event-description" 2]
-    Then Validate WEB Element ["event-element" "page-loaded" 2]
-    Then Validate WEB Element ["page-name" "BootsApp | SIGNUP-http://localhost:3000/signup.html" 2]
+    Then Validate WEB Element ["page-name" "BootsApp | SIGNUP-http://localhost:3000/signup.html"] for event ["Page" "page-loaded"]
+    Then Validate WEB Element ["event-description" "SMAPI_Presence"] for event ["Page" "page-loaded"]
+
+#    Then Validate WEB Element ["event-type" "Page" 2]
+#    Then Check Presence of WEB Element ["event-description" 2]
+#    Then Validate WEB Element ["event-element" "page-loaded" 2]
+#    Then Validate WEB Element ["page-name" "BootsApp | SIGNUP-http://localhost:3000/signup.html" 2]
 
   Scenario: Check Page dom loaded Event while SignUp Page Loading
     Then Click on ["SignUp"]

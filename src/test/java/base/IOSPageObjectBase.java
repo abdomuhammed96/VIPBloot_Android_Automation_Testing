@@ -75,5 +75,7 @@ public abstract class IOSPageObjectBase {
         return LogCompare.validateNoCapturedEvents(logCapture.getLogs());
     }
 
-
+    public boolean checkEventElement(String key, String value, String eventType, String eventElement) {
+        return LogCompare.compareEvent(logCapture.getLogs(), eventType, eventElement, key, value);
+    }
 }

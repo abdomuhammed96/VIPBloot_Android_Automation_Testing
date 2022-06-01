@@ -46,6 +46,11 @@ public class WebMainPageLogic extends WebMainPageAbstract {
     }
 
     @Override
+    public boolean validateEventElement(String key, String value, String eventType, String eventElement) {
+        return checkEventElement(key, value, eventType, eventElement);
+    }
+
+    @Override
     public void ScrollToAnElement(WebElement element) throws InterruptedException {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,500)", element);
     }

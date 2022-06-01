@@ -53,4 +53,8 @@ public abstract class WebPageObjectBase {
         ((JavascriptExecutor)driver).executeScript("window.open()");
         driver.switchTo().window(base);
     }
+
+    public boolean checkEventElement(String key, String value, String eventType, String eventElement) {
+        return LogCompare.compareEvent(logCapture.getLogs(), eventType, eventElement, key, value);
+    }
 }
