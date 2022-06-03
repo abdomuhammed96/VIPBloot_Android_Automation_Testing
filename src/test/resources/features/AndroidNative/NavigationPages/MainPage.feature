@@ -6,11 +6,10 @@ Feature: check AppLaunch event
   Scenario: Check 1st Event When Click on Database Events
     When Click On Button ["Database_Events"]
     Then Capture Android Native Events
-
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_events"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["UIControl" "MaterialButton:button_events"]
     Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:button_events"]
-    Then Validate Android Element ["event-description" "Pressed on Database Events"] for event ["UIControl" "MaterialButton:button_events"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_events"]
     Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_events"]
     Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_events"]
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_events"]
@@ -39,7 +38,6 @@ Feature: check AppLaunch event
   Scenario: Check 3rd Event When Click on Database Events
     When Click On Button ["Database_Events"]
     Then Capture Android Native Events
-
     Then Validate Android Element ["page-name" "MainActivity"] for event ["Page" "Load Time"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.EventFragment"] for event ["Page" "Load Time"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["Page" "Load Time"]
@@ -76,7 +74,7 @@ Feature: check AppLaunch event
     When Click On Button ["Log_Custom_Components"]
     Then Capture Android Native Events
     Then Validate Android Element ["page-name" "MainActivity"] for event ["Page" "Stay Time"]
-    Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["subpage-name" "NA"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["Page" "Stay Time"]
    #    Then Check Element value ["event-description" "Pressed on Database Events" 1]
     Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Page" "Stay Time"]

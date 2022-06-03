@@ -11,7 +11,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:btn_network_activity"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.SecondFragment"] for event ["UIControl" "MaterialButton:btn_network_activity"]
     Then Validate Android Element ["device-orientation" "Portrait"] for event ["UIControl" "MaterialButton:btn_network_activity"]
-    Then Validate Android Element ["event-description" "Pressed on NetworkActivity"] for event ["UIControl" "MaterialButton:btn_network_activity"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_network_activity"]
     Then Validate Android Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_network_activity"]
     Then Validate Android Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_network_activity"]
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:btn_network_activity"]
@@ -23,7 +23,6 @@ Feature: check Network Events when network is on
 
   Scenario: Check Page Event - Stay Time for Main Activity - after clicking on "Network"
   button on Main Page
-
     Then Validate Android Element ["page-name" "MainActivity"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["subpage-name" "NA"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["device-orientation" "Portrait"] for event ["Page" "Stay Time"]
@@ -48,7 +47,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Stay Time"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Page" "Stay Time"]
 
 
 
@@ -62,7 +61,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Load Time"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Load Time"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Load Time"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Page" "Load Time"]
 
 
 
@@ -78,7 +77,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp3GetRequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:okhttp3GetRequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:okhttp3GetRequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:okhttp3GetRequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp3GetRequest"]
 
 
 
@@ -96,7 +95,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
 
@@ -112,7 +111,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp3PostRequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:okhttp3PostRequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:okhttp3PostRequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:okhttp3PostRequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp3PostRequest"]
 
 
 
@@ -128,7 +127,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "POST"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "POST"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "POST"]
 
 
     #################################
@@ -144,13 +143,12 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp2GetRequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:okhttp2GetRequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:okhttp2GetRequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:okhttp2GetRequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp2GetRequest"]
 
 
   Scenario: Check Network Event when clicking on OKHTTP2_GET_REQUEST button
     When Click On Network Button ["OKHTTP2_GET_REQUEST"]
     When Capture Android Native Events
-
     Then Validate Android Element ["page-name" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["subpage-name" "NA"] for event ["Network" "GET"]
@@ -160,7 +158,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
 
@@ -176,7 +174,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp2PostRequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:okhttp2PostRequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:okhttp2PostRequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:okhttp2PostRequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:okhttp2PostRequest"]
 
 
   Scenario: Check Network Event clicking on OKHTTP2_POST_REQUEST button
@@ -191,7 +189,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "POST"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "POST"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "POST"]
 
 
     ######################################### retro###################
@@ -207,7 +205,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:retrofitOkhttp2"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:retrofitOkhttp2"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:retrofitOkhttp2"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:retrofitOkhttp2"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:retrofitOkhttp2"]
 
 
   Scenario: Check Page Event - Stay Time for AllNetworkActivity Activity - after clicking on "RETROFIT_WITH_OKHTTP2" button on Network Page
@@ -222,7 +220,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Stay Time"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Stay Time"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Page" "Stay Time"]
 
 
   Scenario: Check Page Event - Load Time for RetrofitExample Activity - after clicking on "RETROFIT_WITH_OKHTTP2" button on Network Page
@@ -237,7 +235,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Page" "Load Time"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Page" "Load Time"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Load Time"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Page" "Load Time"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Page" "Load Time"]
 
 
   Scenario: Check Network Event when clicking on RETROFIT_WITH_OKHTTP2 button
@@ -252,7 +250,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
 ##############################################################
@@ -269,7 +267,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:urlconnectiongetrequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:urlconnectiongetrequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:urlconnectiongetrequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:urlconnectiongetrequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:urlconnectiongetrequest"]
 
 
   Scenario: Check Network Event when clicking on URL_CONNECTION_GET_REQUEST button
@@ -284,7 +282,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
 
@@ -300,7 +298,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:urlconnectionpostrequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:urlconnectionpostrequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:urlconnectionpostrequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:urlconnectionpostrequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:urlconnectionpostrequest"]
 
 
   Scenario: Check Network Event clicking on URL_CONNECTION_POST_REQUEST button
@@ -315,7 +313,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "POST"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "POST"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "POST"]
 
 
   ###################################################
@@ -333,7 +331,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:volleyrequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:volleyrequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:volleyrequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:volleyrequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:volleyrequest"]
 
 
   Scenario: Check Network Event when clicking on VOLLEY_GET_REQUEST button
@@ -348,7 +346,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
   Scenario: Check UIControl Event when clicking on VOLLEY_POST_REQUEST button
@@ -363,7 +361,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:volleypostrequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:volleypostrequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:volleypostrequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:volleypostrequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:volleypostrequest"]
 
 
   Scenario: Check Network Event when clicking on VOLLEY_POST_REQUEST button
@@ -378,7 +376,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "POST"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "POST"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "POST"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "POST"]
 
 
     ########################################################Custom##############
@@ -394,7 +392,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:customrequest"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "MaterialButton:customrequest"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["UIControl" "MaterialButton:customrequest"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["UIControl" "MaterialButton:customrequest"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:customrequest"]
 
 
   Scenario: Check Network Event when clicking on CUSTOM_NETWORK_EVENT button
@@ -409,7 +407,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
 
   Scenario: Check Network Event when clicking on CUSTOM_NETWORK_EVENT button
@@ -424,7 +422,7 @@ Feature: check Network Events when network is on
     Then Validate Android Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-trace-tid" "NA"] for event ["Network" "GET"]
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Network" "GET"]
-    Then Validate Android Element ["x-vf-net-band" "NA"] for event ["Network" "GET"]
+    Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Network" "GET"]
 
   ######################################## Network logger is off #############################
 

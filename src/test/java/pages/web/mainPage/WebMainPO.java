@@ -128,4 +128,7 @@ public class WebMainPO extends WebPageObjectBase {
 
     @FindBy(xpath = "//*[@id=\"close-smapi-bug-report-html-file\"]/i")
     public WebElement Click_On_Cancel_Report;
+
+
+
 }

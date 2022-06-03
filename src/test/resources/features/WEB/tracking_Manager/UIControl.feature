@@ -52,9 +52,9 @@ Feature: Check About Page
     When Click on ["Change Storage Type"]
     Then Pause Time "1000" ms
     And Capture WEB Events
-    Then Validate WEB Element ["event-description" "Change Storage Type" 5]
-    Then Validate WEB Element ["event-type" "UIControl" 5]
-    Then Validate WEB Element ["event-element" "BUTTON - submit" 5]
+    Then Validate WEB Element ["event-description" "Change Storage Type" 4]
+    Then Validate WEB Element ["event-type" "UIControl" 4]
+    Then Validate WEB Element ["event-element" "BUTTON - submit" 4]
 
   Scenario: Check UI Control event when clicking on "MSISDN - 1234567890" button
     When Click on ["First MSISDN button"]
