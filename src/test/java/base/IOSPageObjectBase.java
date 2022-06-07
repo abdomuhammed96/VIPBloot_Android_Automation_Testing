@@ -47,7 +47,7 @@ public abstract class IOSPageObjectBase {
 
     public JsonObject[] captureAllEvents() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(15000);
         } catch (Exception ign) {
         }
         JsonObject[] jsonList = logCapture.captureIOSEvents(driver);
