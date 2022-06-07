@@ -8,20 +8,20 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 
   Scenario: Check Network Manager Off event
-    Then Check Element value ["x-vf-trace-tid" "NA" 0]
-    Then Check Element value ["x-vf-user-id" "NA" 0]
-    Then Check Element existed ["x-vf-trace-transaction-id" 0]
-    Then Check Element value ["x-vf-net-band" "NA" 0]
-    Then Check Element value ["event-type" "UIControl" 0]
-    Then Check Element existed ["x-vf-trace-timestamp" 0]
-    Then Check Element value ["x-vf-app-state" "Foreground" 0]
-    Then Check Element value ["page-name" "SampleApp.SettingsTableViewController" 0]
-    Then Check Element value ["subpage-name" "NA" 0]
-    Then Check Element value ["x-vf-net-type" "WiFi" 0]
-    Then Check Element value ["event-description" "Disabled" 0]
-    Then Check Element existed ["x-vf-trace-session-id" 0]
-    Then Check Element value ["device-orientation" "Portrait" 0]
-    Then Check Element value ["event-element" "UISwitch" 0]
+    Then Validate IOS Element ["x-vf-trace-tid" "NA"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-user-id" "NA"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-trace-transaction-id" "SMAPI_Presence"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-net-band" "NA"] for event ["UIControl" "UISwitch"]
+#    Then Validate IOS Element ["event-type" "UIControl"] for event ["Application" "NA"]
+    Then Validate IOS Element ["x-vf-trace-timestamp" "SMAPI_Presence"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["page-name" "SampleApp.SettingsTableViewController"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["subpage-name" "NA"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-net-type" "WiFi"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["event-description" "Disabled"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["x-vf-trace-session-id" "SMAPI_Presence"] for event ["UIControl" "UISwitch"]
+    Then Validate IOS Element ["device-orientation" "Portrait"] for event ["UIControl" "UISwitch"]
+#    Then Validate IOS Element ["event-element" "UISwitch"] for event ["Application" "NA"]
 
   Scenario: Check no Get events after Network Manager Off
     When Click On IOS Button ["Back"]
@@ -32,7 +32,7 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 #    Then Check No Captured Events
     Then Check Number of logged events [1]
-    Then Check Element value ["event-element" "UITableView" 0]
+    Then Validate IOS Element ["event-element" "UITableView"] for event ["UIControl" "UITableView"]
 
   Scenario: Check no Custom events after Network Manager Off
     When Click On IOS Button ["Back"]
@@ -43,7 +43,7 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 #    Then Check No Captured Events
     Then Check Number of logged events [1]
-    Then Check Element value ["event-element" "UITableView" 0]
+    Then Validate IOS Element ["event-element" "UITableView"] for event ["UIControl" "UITableView"]
 
   Scenario: Check no Download events after Network Manager Off
     When Click On IOS Button ["Back"]
@@ -54,7 +54,7 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 #    Then Check No Captured Events
     Then Check Number of logged events [1]
-    Then Check Element value ["event-element" "UITableView" 0]
+    Then Validate IOS Element ["event-element" "UITableView"] for event ["UIControl" "UITableView"]
 
   Scenario: Check no Post events after Network Manager Off
     When Click On IOS Button ["Back"]
@@ -65,7 +65,7 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 #    Then Check No Captured Events
     Then Check Number of logged events [1]
-    Then Check Element value ["event-element" "UITableView" 0]
+    Then Validate IOS Element ["event-element" "UITableView"] for event ["UIControl" "UITableView"]
 
   Scenario: Check no Upload events after Network Manager Off
     When Click On IOS Button ["Back"]
@@ -76,17 +76,17 @@ Feature: check SMAPI Network Manager OFF/ON
     When Capture IOS Events
 #    Then Check No Captured Events
     Then Check Number of logged events [2]
-    Then Check Element value ["event-element" "UITableView" 0]
+    Then Validate IOS Element ["event-element" "UITableView"] for event ["UIControl" "UITableView"]
 
-    Then Check Element value ["event-element" "UITableView" 1]
+#    Then Validate IOS Element ["event-element" "UITableView"] for event ["Application" "NA"]
   @TODO
 #  "x-vf-trace-session-id" : "B21ED7A6-CBAF-4EFE-A87F-8B0FCC658A23",
 #  "device-orientation" : "Portrait",
 #  "event-description" : "{\n  \"error\" : \"Internal server Error\",\n  \"responseMessage\" : \"Internal server Error\",\n  \"responseTimeinMS\" : \"0\",\n  \"endPoint\" : \"https:\\\/\\\/jsonplaceholder.typicode.com\",\n  \"requestDate\" : \"Thu, 05-May-2022 12:14 PM GMT+2\",\n  \"responseCode\" : 500\n}",
-#  "event-element" : "GET",
+##  "event-element" : "GET",
 #  "x-vf-trace-tid" : "NA",
 #  "x-vf-net-band" : "NA",
-#  "event-type" : "Network",
+##  "event-type" : "Network",
 #  "x-vf-trace-timestamp" : 1651745687,
 #  "x-vf-user-id" : "NA",
 #  "x-vf-net-type" : "WiFi",
