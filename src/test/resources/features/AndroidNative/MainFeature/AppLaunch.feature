@@ -66,7 +66,7 @@ Feature: check AppLaunch event
     Then Capture Android Native Events
 
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_start_timer"]
-    Then Validate Android Element ["event-description" "Pressed on Start Timer"] for event ["UIControl" "MaterialButton:button_start_timer"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "MaterialButton:button_start_timer"]
@@ -85,7 +85,7 @@ Feature: check AppLaunch event
     Then Capture Android Native Events
 
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_start_timer"]
-    Then Validate Android Element ["event-description" "Pressed on Start Timer"] for event ["UIControl" "MaterialButton:button_start_timer"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["UIControl" "MaterialButton:button_start_timer"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "MaterialButton:button_start_timer"]
@@ -104,7 +104,7 @@ Feature: check AppLaunch event
     Then Capture Android Native Events
 
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_stop_timer"]
-    Then Validate Android Element ["event-description" "Pressed on Stop Timer"] for event ["UIControl" "MaterialButton:button_stop_timer"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "MaterialButton:button_stop_timer"]
@@ -126,7 +126,7 @@ Feature: check AppLaunch event
 
     #Checking UI Control event
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_stop_timer"]
-    Then Validate Android Element ["event-description" "Pressed on Stop Timer"] for event ["UIControl" "MaterialButton:button_stop_timer"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["page-name" "MainActivity"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["UIControl" "MaterialButton:button_stop_timer"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["UIControl" "MaterialButton:button_stop_timer"]
@@ -141,7 +141,7 @@ Feature: check AppLaunch event
     #Checking Application event
 
     Then Validate Android Element ["page-name" "MainActivity"] for event ["Application" "App Launch"]
-    Then Validate Android Element ["event-description" "Pressed on Stop Timer"] for event ["Application" "App Launch"]
+    Then Validate Android Element ["event-description" "SMAPI_Presence"] for event ["Application" "App Launch"]
     Then Validate Android Element ["page-name" "MainActivity"] for event ["Application" "App Launch"]
     Then Validate Android Element ["subpage-name" "com.vodafone.smapi.test.FirstFragment"] for event ["Application" "App Launch"]
     Then Validate Android Element ["x-vf-app-state" "Foreground"] for event ["Application" "App Launch"]
