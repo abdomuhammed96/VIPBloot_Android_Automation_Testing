@@ -8,42 +8,42 @@ Feature: checking Opening UI Change Page events
 
   Scenario: Check Clicking on UI Change
 
-    Then Capture UI Change page events And Compare Parameter ["device-orientation" "Portrait" 1]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-net-type" "WiFi" 1]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-app-state" "Foreground" 1]
-    Then Capture UI Change page events And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture UI Change page events And Compare Parameter ["page-name" "Main" 1]
-    Then Capture UI Change page events And Compare Parameter ["event-type" "Page" 1]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Stay Time"]
 
-    Then Capture UI Change page events And Compare Parameter ["device-orientation" "Portrait" 2]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-net-type" "WiFi" 2]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-app-state" "Foreground" 2]
-    Then Capture UI Change page events And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture UI Change page events And Compare Parameter ["page-name" "UITracking" 2]
-    Then Capture UI Change page events And Compare Parameter ["event-type" "Page" 2]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "NA"]
 
 
   Scenario: Check selecting Second Page
     When Select another page ["SECOND"]
     When Capture events for UI Change
-    Then Capture UI Change page events And Compare Parameter ["event-type" "UIChange" 0]
-    Then Capture UI Change page events And Compare Parameter ["device-orientation" "Portrait" 0]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-net-type" "WiFi" 0]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-app-state" "Foreground" 0]
-    Then Capture UI Change page events And Compare Parameter ["event-description" "Selected Page Second" 0]
-    Then Capture UI Change page events And Compare Parameter ["page-name" "UITracking" 0]
-    Then Capture UI Change page events And Compare Parameter ["event-element" "TabView" 0]
+    Then Validate Android RN Element ["event-type" "UIChange"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["event-description" "Selected Page Second"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["event-element" "TabView"] for event ["UIChange" "TabView"]
 
 
 
   Scenario: Check selecting Third Page
     When Select another page ["THIRD"]
     When Capture events for UI Change
-    Then Capture UI Change page events And Compare Parameter ["event-type" "UIChange" 0]
-    Then Capture UI Change page events And Compare Parameter ["device-orientation" "Portrait" 0]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-net-type" "WiFi" 0]
-    Then Capture UI Change page events And Compare Parameter ["x-vf-app-state" "Foreground" 0]
-    Then Capture UI Change page events And Compare Parameter ["event-description" "Selected Page Third" 0]
-    Then Capture UI Change page events And Compare Parameter ["page-name" "UITracking" 0]
-    Then Capture UI Change page events And Compare Parameter ["event-element" "TabView" 0]
+    Then Validate Android RN Element ["event-type" "UIChange"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["event-description" "Selected Page Third"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["UIChange" "TabView"]
+    Then Validate Android RN Element ["event-element" "TabView"] for event ["UIChange" "TabView"]
 

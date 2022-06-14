@@ -9,39 +9,39 @@ Feature: checking Opening UI Swipe Page events
 
   Scenario: Check page events on clicking on UI Swipe
 
-    Then Capture UI Swipe page events And Compare Parameter ["device-orientation" "Portrait" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-net-type" "WiFi" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-app-state" "Foreground" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["page-name" "UITracking" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["event-type" "Page" 0]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Load Time"]
 
-    Then Capture UI Swipe page events And Compare Parameter ["device-orientation" "Portrait" 1]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-net-type" "WiFi" 1]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-app-state" "Foreground" 1]
-    Then Capture UI Swipe page events And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture UI Swipe page events And Compare Parameter ["page-name" "Main" 1]
-    Then Capture UI Swipe page events And Compare Parameter ["event-type" "Page" 1]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Stay Time"]
 
-    Then Capture UI Swipe page events And Compare Parameter ["device-orientation" "Portrait" 2]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-net-type" "WiFi" 2]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-app-state" "Foreground" 2]
-    Then Capture UI Swipe page events And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture UI Swipe page events And Compare Parameter ["page-name" "UITracking" 2]
-    Then Capture UI Swipe page events And Compare Parameter ["event-type" "Page" 2]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "NA"]
 
 
 
   Scenario: Check UI Swipe
     When refresh page
     When Capture events for UI Swipe
-    Then Capture UI Swipe page events And Compare Parameter ["device-orientation" "Portrait" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-net-type" "WiFi" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["x-vf-app-state" "Foreground" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["event-description" "Swiped page for refresh" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["page-name" "UITracking" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["event-type" "UISwipe" 0]
-    Then Capture UI Swipe page events And Compare Parameter ["event-element" "RefreshControl - SwipeRefreshLayout" 0]
+    Then Validate Android RN Element ["device-orientation" "Portrait"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["x-vf-net-type" "WiFi"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["event-description" "Swiped page for refresh"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["page-name" "UITracking"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["event-type" "UISwipe"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
+    Then Validate Android RN Element ["event-element" "RefreshControl - SwipeRefreshLayout"] for event ["UISwipe" "RefreshControl - SwipeRefreshLayout"]
 
 
 
