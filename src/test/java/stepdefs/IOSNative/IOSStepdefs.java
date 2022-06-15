@@ -1,20 +1,20 @@
-package stepdefs.IOS;
+package stepdefs.IOSNative;
 
 import core.Config;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.asserts.SoftAssert;
-import pages.IOS.IOSMainAbstract;
-import pages.IOS.IOSMainLogic;
+import pages.IOSNativeMain.NativeMainAbstract;
+import pages.IOSNativeMain.NativeMainLogic;
 
 public class IOSStepdefs {
 
-    private IOSMainAbstract page;
+    private NativeMainAbstract page;
     SoftAssert softAssert;
 
     public IOSStepdefs(Config config) {
 //        if (config.isAndroid()) page = new AndroidNativeUIEventsPageLogic();
-        if (config.isIos()) page = new IOSMainLogic();
+        if (config.isIos()) page = new NativeMainLogic();
         softAssert = new SoftAssert();
     }
 
@@ -22,8 +22,6 @@ public class IOSStepdefs {
     public void captureIOSEvents() {
         page.captureEvents();
     }
-
-
 
     @Then("Check Element value [{string} {string} {int}]")
     public void checkElementValue(String key, String value, int eventIndex) {

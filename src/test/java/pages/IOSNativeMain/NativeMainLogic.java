@@ -1,4 +1,4 @@
-package pages.IOS;
+package pages.IOSNativeMain;
 
 import com.google.gson.JsonObject;
 import io.appium.java_client.MobileBy;
@@ -6,9 +6,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class IOSMainLogic extends IOSMainAbstract {
+public class NativeMainLogic extends NativeMainAbstract {
 
-    public IOSMainLogic() {
+    public NativeMainLogic() {
         super();
     }
 

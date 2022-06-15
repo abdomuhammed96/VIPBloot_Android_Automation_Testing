@@ -10,9 +10,10 @@ import org.junit.runner.RunWith;
 //        features = {"src/test/resources/features"},
 
         /* Android RN */
-//        features = {"src/test/resources/features/AndroidRN_MainFeature",
-//                "src/test/resources/features/AndroidRN_NavigationPage",
-//                "src/test/resources/features/AndroidRN_UITracking"},
+//        features = {"src/test/resources/features/AndroidNative",
+//                "src/test/resources/features/AndroidReactNative",
+//                "src/test/resources/features/IOS/MainFeature",
+//                "src/test/resources/features/WEB"},
 
         /* WEB */
         features = {"src/test/resources/features/WEB_MainFeatures"},

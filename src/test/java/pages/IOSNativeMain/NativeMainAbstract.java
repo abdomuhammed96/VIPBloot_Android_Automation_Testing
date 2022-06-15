@@ -1,10 +1,10 @@
-package pages.IOS;
+package pages.IOSNativeMain;
 
 import com.google.gson.JsonObject;
 
-public abstract class IOSMainAbstract extends MainPO {
+public abstract class NativeMainAbstract extends MainPO {
 
-    public IOSMainAbstract() {
+    public NativeMainAbstract() {
         super();
     }
 

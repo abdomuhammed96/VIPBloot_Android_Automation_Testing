@@ -1,12 +1,12 @@
-package pages.IOS;
+package pages.IOSNativeMain;
 
-import base.IOSPageObjectBase;
+import base.IOSNativePageObjectBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class MainPO extends IOSPageObjectBase {
+public class MainPO extends IOSNativePageObjectBase {
 
     public MainPO(){super();}
 
