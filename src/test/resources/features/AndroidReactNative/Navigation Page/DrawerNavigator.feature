@@ -5,15 +5,15 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     When Scroll and click "Drawer Navigator"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Page" 0]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["page-name" "Main" 1]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 2]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture And Compare Parameter ["page-name" "Main" 3]
-    Then Capture And Compare Parameter ["event-description" "UnLoaded" 3]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "UnLoaded"] for event ["Page" "NA"]
     Then Scroll and click "Jump to Main screen"
 
 
@@ -26,12 +26,12 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     When Scroll and click "Drawer Screen 2"
     When Capture Events;
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 2]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "NA"]
     Then Close the Drawer
 
   Scenario: Click on Open Drawer Two And Upload Image
@@ -43,18 +43,18 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     When Scroll and click "Upload Image"
     When Capture Events;
-    Then Capture And Compare Parameter ["page-name" "UploadImage" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture And Compare Parameter ["page-name" "UploadImage" 2]
+    Then Validate Android RN Element ["page-name" "UploadImage"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "UploadImage"] for event ["Page" "NA"]
     When Scroll and click "Upload Image"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Application" 0]
-    Then Capture And Compare Parameter ["page-name" "UploadImage" 0]
-    Then Capture And Compare Parameter ["event-description" "Application enters background" 0]
-    Then Capture And Compare Parameter ["x-vf-app-state" "Foreground" 0]
+    Then Validate Android RN Element ["event-type" "Application"] for event ["Application" "NA"]
+    Then Validate Android RN Element ["page-name" "UploadImage"] for event ["Application" "NA"]
+    Then Validate Android RN Element ["event-description" "Application enters background"] for event ["Application" "NA"]
+    Then Validate Android RN Element ["x-vf-app-state" "Foreground"] for event ["Application" "NA"]
 
   Scenario: Click on Open Drawer Two And Return to Drawer Screen 1
     Given User opens App
@@ -69,23 +69,23 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     When Scroll and click "Drawer Screen 1"
     When Capture Events;
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 0]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 0]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 1]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
     Then Scroll and click "Jump to Main screen"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Page" 0]
-    Then Capture And Compare Parameter ["page-name" "Main" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "Main" 2]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 3]
-    Then Capture And Compare Parameter ["event-description" "UnLoaded" 3]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 4]
-    Then Capture And Compare Parameter ["event-description" "UnLoaded" 4]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "UnLoaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "UnLoaded"] for event ["Page" "NA"]
 
   Scenario: Click on Drawer Navigator And Check Main Screen
     Given User opens App
@@ -94,13 +94,13 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     Then Scroll and click "Jump to Main screen"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Page" 0]
-    Then Capture And Compare Parameter ["page-name" "Main" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 1]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "Main" 2]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
 
   Scenario: Click on Drawer Screen 2  then Jump to Main Screen
     Given User opens App
@@ -113,16 +113,16 @@ Feature: Click on Drawer Navigator Logs
     When Capture Events;
     Then Scroll and click "Jump to Main screen"
     When Capture Events;
-    Then Capture And Compare Parameter ["event-type" "Page" 0]
-    Then Capture And Compare Parameter ["page-name" "Main" 0]
-    Then Capture And Compare Parameter ["event-element" "Load Time" 0]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 1]
-    Then Capture And Compare Parameter ["event-element" "Stay Time" 1]
-    Then Capture And Compare Parameter ["page-name" "Main" 2]
-    Then Capture And Compare Parameter ["event-description" "Loaded" 2]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen1" 3]
-    Then Capture And Compare Parameter ["event-description" "UnLoaded" 3]
-    Then Capture And Compare Parameter ["page-name" "DrawerScreen2" 4]
-    Then Capture And Compare Parameter ["event-description" "UnLoaded" 4]
+    Then Validate Android RN Element ["event-type" "Page"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["event-element" "Load Time"] for event ["Page" "Load Time"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["event-element" "Stay Time"] for event ["Page" "Stay Time"]
+    Then Validate Android RN Element ["page-name" "Main"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "Loaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen1"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "UnLoaded"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["page-name" "DrawerScreen2"] for event ["Page" "NA"]
+    Then Validate Android RN Element ["event-description" "UnLoaded"] for event ["Page" "NA"]
 
 
