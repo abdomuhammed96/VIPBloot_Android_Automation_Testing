@@ -74,7 +74,7 @@ public class Config {
         url = System.getProperty("seleniumGrid", "http://0.0.0.0:4723/wd/hub");
         capabilities.put("deviceName", System.getProperty("DEVICE_NAME", androidProp.getProperty("DEVICE_NAME")));
         capabilities.put("systemPort", parseInt(getProperty("systemPort", "8200")));
-        capabilities.put("appiumVersion", "1.22.0");
+        capabilities.put("appiumVersion", "1.22.3");
         capabilities.put("autoGrantPermissions", true);
         capabilities.put("appActivity", "");
         capabilities.put("appPackage", "");

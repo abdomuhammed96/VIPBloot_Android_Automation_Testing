@@ -71,7 +71,26 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
                 waitForVisibility(UIEvents);
                 UIEvents.click();
                 break;
-
+            case "BugReport":
+                waitForVisibility(BugReport);
+                BugReport.click();
+                break;
+            case "BugReport_On_Off":
+                waitForVisibility(BugReport_On_Off);
+                BugReport_On_Off.click();
+                break;
+            case "Welcome_Msg":
+                waitForVisibility(Welcome_Msg);
+                Welcome_Msg.click();
+                break;
+            case "Welcome_Msg_checkBox":
+                waitForVisibility(Welcome_Msg_checkBox);
+                Welcome_Msg_checkBox.click();
+                break;
+            case "Welcome_Msg_Dismiss_btn":
+                waitForVisibility(Welcome_Msg_Dismiss_btn);
+                Welcome_Msg_Dismiss_btn.click();
+                break;
             default:
         }
     }

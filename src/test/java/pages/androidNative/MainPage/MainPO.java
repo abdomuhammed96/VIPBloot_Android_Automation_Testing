@@ -70,5 +70,36 @@ public class MainPO extends AndroidNativePageObjectBase {
     })
     public MobileElement UIEvents;
 
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/button_bug_report"),
+
+    })
+    public MobileElement BugReport;
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/cb_BugReportOn"),
+    })
+    public MobileElement BugReport_On_Off;
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "android:id/button2"),
+    })
+    public MobileElement Welcome_Msg_Dismiss_btn;
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/cb_WelcomeOn"),
+    })
+    public MobileElement Welcome_Msg_checkBox;
+
+
+    @FindAll({
+
+            @FindBy(how = How.ID, using = "com.vodafone.smapi.test:id/button_welcome_message"),
+    })
+    public MobileElement Welcome_Msg;
 
 }
