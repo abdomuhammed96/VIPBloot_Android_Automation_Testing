@@ -92,7 +92,7 @@ Feature: Customer Channel Feature
     Then Validate Android Element ["x-vf-user-id" "NA"] for event ["Page" "Stay Time"]
     Then Validate Android Element ["x-vf-net-band" "SMAPI_Presence"] for event ["Page" "Stay Time"]
 
-  Scenario: Check Page Event - Load Time for UIEvents Fragment on Main activity
+  Scenario: Check Page Event - Load Time for BugReport Page on Main activity
   - after clicking on "Bug Report" button on Main Page when BugReport is ON & Welcome Message is off
     When Click On Button ["Welcome_Msg_checkBox"]
     When Capture Android Native Events
