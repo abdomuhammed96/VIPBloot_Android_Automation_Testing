@@ -1,4 +1,4 @@
-Feature: UI Events Feature
+Feature: Customer Channel Feature
 
   Background: User Opens App and Capture Events
     When Capture Android Native Events
