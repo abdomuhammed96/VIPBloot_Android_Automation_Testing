@@ -1,6 +1,8 @@
 package pages.androidNative.MainPage;
 
 import com.google.gson.JsonObject;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 
 import static io.appium.java_client.touch.offset.PointOption.point;
 
@@ -11,92 +13,25 @@ public class AndroidNativeMainPageLogic extends AndroidNativeMainPageAbstract {
     }
 
 
-    @Override
-    public JsonObject[] captureEvents() {
-        return captureAllEvents();
-    }
 
     @Override
-    public boolean validateElementValue(String key, String value, int eventIndex) {
-        return ValidateElementValue(key, value, eventIndex);
-    }
-
-
-    @Override
-    public void clickOnButton(String arg0) {
+    public void clickOnButton(String arg0) throws InterruptedException {
         switch (arg0){
-            case "SMAPI_ON_OFF":
-                waitForVisibility(SMAPI_ON_OFF);
-                SMAPI_ON_OFF.click();
+            case "Play Now":
+                waitForVisibility(PlayNow);
+                PlayNow.click();
+                Thread.sleep(25000);
                 break;
-            case "Start_timer":
-                waitForVisibility(Start_timer);
-                Start_timer.click();
-                break;
-            case "Stop_timer":
-                waitForVisibility(Stop_timer);
-                Stop_timer.click();
-                break;
-            case "Database_Events":
-                waitForVisibility(Database_Events);
-                Database_Events.click();
-                break;
-            case "Log_Custom_Components":
-                waitForVisibility(Log_Custom_Components);
-                Log_Custom_Components.click();
-                break;
-            case "NEXT":
-                waitForVisibility(Next);
-                Next.click();
-                break;
-            case "Network_Button":
-                waitForVisibility(NetworkBtn);
-                NetworkBtn.click();
-                break;
-
-            case "Open_UserIdPage_Button":
-                waitForVisibility(SetUserIdPageBtn);
-                SetUserIdPageBtn.click();
-                break;
-
-            case "ImageExclusionBtn":
-                waitForVisibility(ImageExclusionBtn);
-                ImageExclusionBtn.click();
-                break;
-            case "Custom_Event":
-                waitForVisibility(Custom_Event);
-                Custom_Event.click();
-                break;
-            case "UIEvents":
-                waitForVisibility(UIEvents);
-                UIEvents.click();
-                break;
-            case "BugReport":
-                waitForVisibility(BugReport);
-                BugReport.click();
-                break;
-            case "BugReport_On_Off":
-                waitForVisibility(BugReport_On_Off);
-                BugReport_On_Off.click();
-                break;
-            case "Welcome_Msg":
-                waitForVisibility(Welcome_Msg);
-                Welcome_Msg.click();
-                break;
-            case "Welcome_Msg_checkBox":
-                waitForVisibility(Welcome_Msg_checkBox);
-                Welcome_Msg_checkBox.click();
-                break;
-            case "Welcome_Msg_Dismiss_btn":
-                waitForVisibility(Welcome_Msg_Dismiss_btn);
-                Welcome_Msg_Dismiss_btn.click();
+            case "Enter as a Guest":
+                Thread.sleep(25000);
+                /*waitForVisibility(EnterAsGuest);
+                EnterAsGuest.click();*/
+                TouchAction touchAction=new TouchAction(driver);
+                touchAction.tap(PointOption.point(569, 2152)).perform();
                 break;
             default:
         }
     }
 
-    @Override
-    public boolean validateEventElement(String key, String value, String eventType, String eventElement) {
-        return checkEventElement(key, value, eventType, eventElement);
-    }
+
 }

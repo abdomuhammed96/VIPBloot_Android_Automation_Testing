@@ -3,6 +3,7 @@ package base;
 import com.google.gson.JsonObject;
 import core.Config;
 import core.Hooks;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -19,8 +20,6 @@ import java.util.concurrent.TimeUnit;
 public abstract class AndroidNativePageObjectBase {
     public MobileDriver driver;
     WebDriverWait wait;
-    LogCapture logCapture = new LogCapture();
-
     public AndroidNativePageObjectBase() {
         this.driver = Hooks.getDriver();
         setDecoratorBasedOnPlatform();
@@ -48,26 +47,6 @@ public abstract class AndroidNativePageObjectBase {
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public JsonObject[] captureAllEvents() {
-        try {
-            Thread.sleep(10000);
-        } catch (Exception ign) {
-        }
-        JsonObject[] jsonList = logCapture.captureAndroidNativeEvents(driver);
-        try {
-            Thread.sleep(3000);
-        } catch (Exception ign) {
-        }
-        logCapture.clearLog();
-        return jsonList;
-    }
-
-    public Boolean captureNoEvents() {
-        JsonObject[] jsonList = logCapture.captureAndroidNativeEvents(driver);
-        if (jsonList[0] == null)
-            return true;
-        return false;
-    }
 
 
     public  void clickOnBackButton()
@@ -82,17 +61,14 @@ public abstract class AndroidNativePageObjectBase {
         Textbox.sendKeys(text);
     }
 
+    public void scrollAndClick(String name) throws InterruptedException {
 
-
-    public boolean ValidateElementValue(String key, String value, int eventIndex) {
-        return LogCompare.compareKeyValue(key, value, logCapture.getLogs()[eventIndex]);
-
-        }
-    public boolean checkValueIsNotNull(String key, int eventIndex) {
-        return LogCompare.checkValueIsNotNull(key, logCapture.getLogs()[eventIndex]);
+        Thread.sleep(25000);
+        driver.findElement(MobileBy.AndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+                        + name +
+                        "\").instance(0))")).click();
+        try { Thread.sleep(1000); } catch (Exception ign) {}
     }
 
-    public boolean checkEventElement(String key, String value, String eventType, String eventElement) {
-        return LogCompare.compareEvent(logCapture.getLogs(), eventType, eventElement, key, value);
-    }
 }

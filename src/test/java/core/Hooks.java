@@ -16,8 +16,6 @@ public class Hooks {
     public Hooks() {
         if (config.isMobile())
             setDriver(driver);
-        if (config.isWeb())
-            setWebDriver(webDriver);
     }
 
     public static MobileDriver getDriver() {
@@ -39,8 +37,7 @@ public class Hooks {
     private void closeDriver() {
         if (config.isMobile())
             Hooks.driver = null;
-        if (config.isWeb())
-            Hooks.webDriver = null;
+
 
     }
 
@@ -51,19 +48,12 @@ public class Hooks {
         if (config.isMobile())
             if (driver == null)
                 setDriver(factory.createDriver());
-
-        if (config.isWeb())
-            if (webDriver == null)
-                setWebDriver(factory.createWebDriver());
     }
 
     @After()
     public void afterScenario(){
         if (config.isMobile())
             driver.closeApp();
-
-        if (config.isWeb())
-            webDriver.quit();
 
         closeDriver();
         try { Thread.sleep(3000); } catch (Exception ign) {}
